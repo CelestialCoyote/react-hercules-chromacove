@@ -76,24 +76,22 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 			<button
 				className={
 					level > 0 ?
-						"toggle-button-on" :
-						"toggle-button"
+						"toggle-button-on mb-8" :
+						"toggle-button mb-8"
 				}
-				
+
 				onClick={handleToggleButton}
 			>
 				{coveColor.toUpperCase()}<br />{level > 0 ? "On" : "Off"}
 			</button>
 
-			<label className="cove-text">{
+			<label className="text-xl text-red-500 mb-6">{
 				coveColor.toUpperCase()}
-				<br />
-				{level.toFixed(3)}
 			</label>
 
 			<Slider
 				sx={{
-					color: "red",
+					color: { color },
 					height: "100%",
 					'& .MuiSlider-thumb': {
 						borderRadius: '0.25rem',
@@ -116,10 +114,14 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 				onChange={debounce(handleSliderChange)}
 			/>
 
+			<label className="text-xl text-red-500 mt-8">
+				{level.toFixed(3)}
+			</label>
+
 		</div>
 
 	);
-}
+};
 
 
 export default VerticalCoveSlider;

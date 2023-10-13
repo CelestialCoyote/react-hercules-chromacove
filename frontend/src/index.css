@@ -33,7 +33,7 @@ body {
     color: red;
     font-size: 1.25rem;
     height: 4.5rem;
-    margin: 0;
+    /* margin: 0; */
     padding: 0.25rem;
     width: 7.0rem;
 }
@@ -45,7 +45,7 @@ body {
     color: black;
     font-size: 1.25rem;
     height: 4.5rem;
-    margin: 0;
+    /* margin: 0; */
     padding: 0.25rem;
     width: 7.0rem;
 }
