@@ -1,0 +1,12 @@
+.star-machine-motions {
+    background-color: black;
+    flex-grow: 1;
+    /*padding: 1rem;*/
+    /*overflow-y: auto;*/
+    width: 100%;
+}
+
+.star-machine-motions h1 {
+    color: red;
+    text-align: center;
+}
