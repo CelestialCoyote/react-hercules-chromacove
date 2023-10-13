@@ -8,17 +8,17 @@ import StarMachineMotions from './pages/StarMachineMotions/StarMachineMotions';
 
 const App = () => {
 
-    return (
-        <div className="App">
-            <Nav />
-            <Routes>
-                <Route path="/rgbcove" element={<RGBCove />} />
-                <Route path="/starmachinelamps" element={<StarMachineLamps />} />
-                <Route path="/starmachinemotions" element={<StarMachineMotions />} />
-            </Routes>
-            <Footer />
-        </div>
-    );
+	return (
+		<div className="flex flex-col h-screen w-full">
+			<Nav />
+			<Routes>
+				<Route path="/rgbcove" element={<RGBCove />} />
+				<Route path="/starmachinelamps" element={<StarMachineLamps />} />
+				<Route path="/starmachinemotions" element={<StarMachineMotions />} />
+			</Routes>
+			<Footer />
+		</div>
+	);
 };
 
 
