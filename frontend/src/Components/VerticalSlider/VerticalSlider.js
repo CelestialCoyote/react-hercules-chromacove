@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-//import { baseAPI } from '../../userConfig/baseAPI';
-import './VerticalCoveSlider2.css';
+import { baseAPI } from '../../userConfig/baseAPI';
+import './VerticalSlider.css';
 
 
 const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
@@ -110,7 +110,7 @@ const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
                 onChange={handleSliderChange}
             />
 
-            <label className="cove-text">{level.toFixed(3)}</label>
+            <label className="cove-text">{level}</label>
 
         </div>
 

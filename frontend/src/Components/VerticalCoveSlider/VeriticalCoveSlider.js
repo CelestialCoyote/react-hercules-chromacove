@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-//import { baseAPI } from '../../userConfig/baseAPI';
+import { baseAPI } from '../../userConfig/baseAPI';
 
 
 const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {

@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Nav from './Components/Nav/Nav';
-import Footer from './Components/Footer/Footer';
+import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 import RGBCove from './pages/RGBCove/RGBCove';
+import CoveControl from './pages/RGBCove2/CoveControl';
 import StarMachineLamps from './pages/StarMachineLamps/StarMachineLamps';
 import StarMachineMotions from './pages/StarMachineMotions/StarMachineMotions';
 
@@ -13,6 +14,7 @@ const App = () => {
 			<Nav />
 			<Routes>
 				<Route path="/rgbcove" element={<RGBCove />} />
+				<Route path="/covecontrol" element={<CoveControl />} />
 				<Route path="/starmachinelamps" element={<StarMachineLamps />} />
 				<Route path="/starmachinemotions" element={<StarMachineMotions />} />
 			</Routes>

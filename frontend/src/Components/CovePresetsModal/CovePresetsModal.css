@@ -1,0 +1,132 @@
+.edit-presets-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-presets-modal-label {
+    color: red;
+    font-size: 2.0rem;
+    margin: 1.0rem 0;
+    text-align: center;
+}
+
+.edit-selection {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-preset-button-grid {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    height: 75vh;
+    justify-items: center;
+    width: 50%;
+}
+
+.edit-preset-button {
+    background-color: black;
+    border: 2px solid red;
+    border-radius: 0.75rem;
+    color: red;
+    font-size: 1.25rem;
+    height: 2.5rem;
+    width: 6.5rem;
+}
+
+.edit-preset-button-on {
+    background-color: red;
+    border: 2px solid red;
+    border-radius: 0.75rem;
+    color: black;
+    font-size: 1.25rem;
+    height: 2.5rem;
+    width: 6.5rem;
+}
+
+.edit-preset-button:hover {
+    border: 2px solid pink;
+    color: pink;
+}
+
+.edit-preset-button-on:hover {
+    background-color: pink;
+    border: 2px solid pink;
+}
+
+
+
+.edit-settings {
+    border-left: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.0rem;
+    width: 50%;
+}
+
+.edit-settings-label {
+    color: red;
+    font-size: 1.75rem;
+    margin: 1.0rem 0;
+    text-align: center;
+}
+
+.edit-selected-label {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.edit-settings-label-medium {
+    color: red;
+    font-size: 1.25rem;
+    margin: 1.0rem 0;
+    text-align: center;
+}
+
+.edit-selected-number {
+    color: pink;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    margin-left: 1.5rem;
+}
+
+
+
+
+
+
+.edit-presets-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 1.0rem;
+}
+
+
+
+
+.preset-input {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.0rem;
+}
+
+.input-label {
+    color: red;
+    font-size: 1.25rem;
+    text-align: right;
+    width: 8.0rem;
+}
+
+.preset-input-value {
+    background-color: black;
+    color: pink;
+    font-size: 1.25rem;
+    margin-left: 1.0rem;
+    text-align: left;
+    width: 8.0rem;
+}

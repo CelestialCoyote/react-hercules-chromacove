@@ -9,25 +9,37 @@ const Nav = () => {
         const isActive = useMatch({ path: resolvedPath.pathname, end: true })
 
         return (
-            <li className={isActive ? "active" : ""}>
+            <div className={isActive ? "active" : ""}>
                 <Link to={to} {...props}>
                     {children}
                 </Link>
-            </li>
+            </div>
         );
     };
 
     return (
-        <nav className="flex justify-between items-center w-100% h-12 bg-slate-400">
+        <nav
+			className="
+				flex
+				justify-between
+				items-center
+				w-100%
+				h-12 
+				bg-slate-400
+			"
+		>
             <label>Name<br></br>Planetarium</label>
-            <ul>
+            <div
+				className="flex justify-between w-3/4"
+			>
                 {/*<li><Link to="/">RGB<br></br>Cove</Link></li>*/}
                 {/*<li><Link to="/starmachinelamps">StarMachine<br></br>Lamps</Link></li>*/}
                 {/*<li><Link to="/starmachinemotions">StarMachine<br></br>Motions</Link></li>*/}
                 <CustomLink to="/rgbcove">RGB<br></br>Cove</CustomLink>
+				<CustomLink to="/covecontrol">Cove<br></br>Control</CustomLink>
                 <CustomLink to="/starmachinelamps">StarMachine<br></br>Lamps</CustomLink>
                 <CustomLink to="/starmachinemotions">StarMachine<br></br>Motions</CustomLink>
-            </ul>
+            </div>
         </nav>
     );
 };

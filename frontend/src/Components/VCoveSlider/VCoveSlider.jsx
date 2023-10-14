@@ -1,0 +1,143 @@
+import { useState } from 'react';
+import Slider from '@mui/material/Slider';
+import { baseAPI } from '../../userConfig/baseAPI';
+import './VCoveSlider.css';
+
+
+const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
+
+    const [temp, setTemp] = useState(0.000);
+
+    const updateChannelState = (channelId, value) => {
+        setState(prevState => (
+            { ...prevState, [channelId]: { ...prevState[channelId], value: value } }
+        ));
+    };
+
+    const debounce = (func, wait, immediate) => {
+        let timeout;
+
+        return function () {
+            let context = this;
+            let args = arguments;
+
+            let later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+
+            let callNow = immediate && !timeout;
+
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+
+    const sendColorData = (currentValue, isSlider) => {
+        const data = [];
+        let channelDuration = 0.01;
+
+        if (isSlider)
+            channelDuration = 0.01;
+        else
+            channelDuration = duration;
+
+        data.push({
+            "id": channelState.id,
+            "name": channelState.name,
+            "value": currentValue,
+            "bitResolution": channelState.bitResolution,
+            "lowByteChannel": channelState.lowByteChannel,
+            "highByteChannel": channelState.highByteChannel,
+            "slider": channelState.slider
+        });
+        data.push({ "name": "master", "value": masterValue, "duration": channelDuration });
+
+        try {
+            baseAPI.post('colorChange', data)
+                .then((res) => {
+                    console.log(res.data);
+                });
+        } catch (error) {
+            console.log('Update color channel failed.', error);
+        };
+    };
+
+    const handleToggleButton = () => {
+        let newLevel;
+        if (channelState.value > 0.000) {
+            setTemp(channelState.value);
+            updateChannelState(channelState.id, 0.000);
+            newLevel = 0.000;
+        } else {
+            if (temp === 0.000) {
+                setTemp(1.000);
+                updateChannelState(channelState.id, 1.000);
+                newLevel = 1.000;
+            } else {
+                updateChannelState(channelState.id, temp);
+                newLevel = temp;
+            }
+        }
+
+        sendColorData(newLevel);
+    };
+
+    const handleColorChange = (event) => {
+        updateChannelState(channelState.id, event.target.value);
+
+        if (event.target.value === 0.000) setTemp(0);
+
+        sendColorData(event.target.value, true);
+    };
+
+    return (
+
+        <div className="cove-slider-group">
+
+            <button
+                className={channelState.value > 0 ? "toggle-button-on" : "toggle-button"}
+                onClick={handleToggleButton}
+            >
+                {channelState.name.toUpperCase()}<br />{channelState.value > 0 ? "On" : "Off"}
+            </button>
+
+            <label className="cove-text">{
+                channelState.name.toUpperCase()}
+                <br />
+                {channelState.value.toFixed(3)}
+            </label>
+
+            <Slider
+                sx={{
+                    color: "red",
+                    height: "100%",
+                    '& .MuiSlider-thumb': {
+                        borderRadius: '0.25rem',
+                        height: "1.5rem",
+                        width: "3.0rem"
+                    },
+                    '& .MuiSlider-rail': {
+                        borderRadius: '0.25rem',
+                        width: "1.0rem"
+                    },
+                    '& .MuiSlider-track': {
+                        width: "0.5rem"
+                    }
+                }}
+                orientation="vertical"
+                min={0.000}
+                max={1.000}
+                step={0.001}
+                value={channelState.value}
+                onChange={debounce(handleColorChange)}
+            />
+
+        </div>
+
+    );
+}
+
+
+export default VCoveSlider;

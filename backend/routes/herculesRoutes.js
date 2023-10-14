@@ -1,11 +1,32 @@
 const express = require("express");
 const fs = require("fs");
 const router = express.Router();
+//const DMX = require('dmx');
+//const universeInfo = require('../config/universe');
+const dmxChannels = require('../config/channels');
 
 
+//const dmx = new DMX();
+//const universe = dmx.addUniverse(universeInfo.universeName, universeInfo.driver, universeInfo.serialPort);
+
+// Read channel data from file.
+const getChannelData = () => {
+    try {
+        const data = JSON.parse(fs.readFileSync('./config/channels.json', "utf8"));
+
+        return data;
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+};
+
+// Read Preset Button data from file.
 const getPresetsFromFile = () => {
     try {
         const data = JSON.parse(fs.readFileSync('./config/presets.json', "utf8"));
+        //console.log(`preset data: ${JSON.stringify(data)}`);
+
         return data;
     } catch (error) {
         console.error(error);
@@ -14,20 +35,88 @@ const getPresetsFromFile = () => {
 };
 
 // Determine actual color level based on master value.
-const getLevel = (primary, master) => {
-    let level = parseInt(primary) * (parseInt(master) * 0.00392157);
+// For 16bit values requiring 2 channels per color/ light. 
+const getLevel16Bit = (rawLevel, master) => {
+    let lsb = 0;
+    let msb = 0;
 
-    return Math.round(level);
+    if (rawLevel < 0) {
+        lsb = -1;
+        msb = -1;
+    }
+    let level = (65535 * parseFloat(rawLevel)) * parseFloat(master);
+
+    lsb = Math.round(level / 256);
+    if (lsb === 256) lsb = 255;
+    msb = Math.round(level % 256);
+    if (msb === 256) msb = 255;
+
+    return [lsb, msb];
 };
 
-const getRGBWValues = (redVal, grnVal, bluVal, whtVal, master) => {
-    let red = redVal < 0 ? -1 : getLevel(redVal, master);
-    let grn = grnVal < 0 ? -1 : getLevel(grnVal, master);
-    let blu = bluVal < 0 ? -1 : getLevel(bluVal, master);
-    let wht = whtVal < 0 ? -1 : getLevel(whtVal, master);
+// For 8bit values requiring 1 channel per color/ light. 
+const getLevel8Bit = (rawLevel, master) => {
+    let lsb = 0;
 
-    return [red, grn, blu, wht];
+    if (rawLevel < 0) {
+        lsb = -1;
+    }
+
+    lsb = Math.round(256 * parseFloat(rawLevel) * parseFloat(master));
+    if (lsb === 256) lsb = 255;
+
+    return [lsb];
 };
+
+const sendDMX = (data) => {
+    // Extract Master level and duration used for color change.
+    const master = data.find(channel => channel.name === 'master');
+    const masterValue = master.value;
+    const duration = master.duration;
+    const timer = parseInt(duration) * 1000;
+
+    // Get individual channel info and place in object to send to DMX.
+    let allChannels = {};
+
+    data.forEach(channel => {
+        if (channel.name !== "master") {
+            if (channel.bitResolution === 16) {
+                let level = getLevel16Bit(parseFloat(channel.value), masterValue);
+                allChannels[channel.lowByteChannel] = level[0];
+                allChannels[channel.highByteChannel] = level[1];
+            } else if (channel.bitResolution === 8) {
+                let level = getLevel8Bit(parseFloat(channel.value), masterValue);
+                allChannels[channel.lowByteChannel] = level[0];
+            };
+        };
+    });
+
+    //if (duration) {
+        new DMX.Animation().add(allChannels, timer).run(universe);
+    //} else {
+    //    universe.update(allChannels);
+    //}
+};
+
+
+/***************
+* Routes.
+***************/
+
+// Send all channelData to Frontend.
+router.get('/channelData', (req, res) => {
+    const channelData = getChannelData();
+
+    try {
+        return res
+            .status(200)
+            .send(channelData);
+    } catch (error) {
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${error}`);
+    }
+});
 
 // Send Preset buttons data to Frontend.
 router.get('/presets', (req, res) => {
@@ -44,22 +133,44 @@ router.get('/presets', (req, res) => {
     }
 });
 
-// Set color(s) instantly, no fades.
-router.post('/colorChangeSlider', (req, res) => {
-    try {
-        let channelData = req.body;
+// Update Preset button data.
+// Needs to be udpated to deal with more than just RGBW values.
+router.post('/presets', (req, res) => {
 
-        if (!channelData)
+    try {
+        let presetUpdate = req.body;
+        console.log(`From Preset Edit: ${JSON.stringify(presetUpdate)}`);
+
+        if (!presetUpdate)
             return res
                 .status(400)
-                .send('No channelData received.');
+                .send('No Data received.');
 
+        const existingPresets = getPresetsFromFile();
 
-        console.log(`From slider: Channel- ${channelData.channel}, Level- ${channelData.level}`);
+        const updatePresets = existingPresets.map(presets => {
+            if (presets.preset === presetUpdate.preset) {
+                return {
+                    ...presets,
+                    label: presetUpdate.label,
+                    master: presetUpdate.master,
+                    duration: presetUpdate.duration,
+                    channels: presetUpdate.channels
+                };
+            }
+
+            return presets;
+        });
+
+        try {
+            fs.writeFileSync('./config/presets.json', JSON.stringify(updatePresets, null, 4));
+        } catch (error) {
+            console.error(error);
+        }
 
         return res
             .status(200)
-            .send('Fader status: 200');
+            .send(updatePresets);
     } catch (error) {
         return res
             .status(500)
@@ -67,51 +178,12 @@ router.post('/colorChangeSlider', (req, res) => {
     }
 });
 
-router.post('/colorChangeButton', (req, res) => {
+// Handles both single color slider and associated toggle button.
+router.post('/colorChange', (req, res) => {
     try {
         const data = req.body;
-        console.log(`button data: ${JSON.stringify(req.body)}`);
-
-        // Update stateMaster with incoming values.
-        //stateMaster = data[4].master;
-        //console.log(`stateMaster: ${stateMaster}`);
-
-
-        //const red = getLevel(data[0].red, data[4].master);
-        //const grn = getLevel(data[1].grn, data[4].master);
-        //const blu = getLevel(data[2].blu, data[4].master);
-        //const wht = getLevel(data[3].wht, data[4].master);
-        //const duration = parseInt(data[5].duration);
-        //const timer = parseInt(duration) * 1000;
-
-        //let channels = {};
-
-//        if (red[0] >= 0) {
-//            channels[dmxChannels.redLSB] = red[0];
-//            channels[dmxChannels.redMSB] = red[1];
-//            stateRed = data[0].red;
-//            console.log(`stateRed: ${stateRed}`);
-//        }
-//        if (grn[0] >= 0) {
-//            channels[dmxChannels.grnLSB] = grn[0];
-//            channels[dmxChannels.grnMSB] = grn[1];
-//            stateGrn = data[1].grn;
-//            console.log(`stateGrn: ${stateGrn}`);
-//        }
-//        if (blu[0] >= 0) {
-//            channels[dmxChannels.bluLSB] = blu[0];
-//            channels[dmxChannels.bluMSB] = blu[1];
-//            stateBlu = data[2].blu;
-//            console.log(`stateBlu: ${stateBlu}`);
-//        }
-//        if (wht[0] >= 0) {
-//            channels[dmxChannels.whtLSB] = wht[0];
-//            channels[dmxChannels.whtMSB] = wht[1];
-//            stateWht = data[3].wht;
-//            console.log(`stateWht: ${stateWht}`);
-//        }
-//
-//        new DMX.Animation().add(channels, timer).run(universe);
+        //sendDMX(data);
+		console.log(data);
 
         if (!data)
             return res
@@ -120,7 +192,53 @@ router.post('/colorChangeButton', (req, res) => {
 
         return res
             .status(200)
-            .send('Button status: 200');
+            .send('Status: 200 - single color');
+    } catch (error) {
+        console.log(error);
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${error}`);
+    }
+});
+
+// Handles Master color slider and associated toggle button.
+router.post('/masterChange', (req, res) => {
+    try {
+        const data = req.body;
+        //sendDMX(data);
+		console.log(data);
+
+        if (!data)
+            return res
+                .status(400)
+                .send('No channelData received.');
+
+        return res
+            .status(200)
+            .send('Status: 200 - master change');
+    } catch (error) {
+        console.log(error);
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${error}`);
+    }
+});
+
+// Handles data sent from Preset Buttons.
+router.post('/presetButton', (req, res) => {
+    try {
+        const data = req.body;
+        //sendDMX(data);
+		console.log(data);
+
+        if (!data)
+            return res
+                .status(400)
+                .send('No channelData received.');
+
+        return res
+            .status(200)
+            .send('Status: 200 - Preset');
 
     } catch (error) {
         console.log(error);
