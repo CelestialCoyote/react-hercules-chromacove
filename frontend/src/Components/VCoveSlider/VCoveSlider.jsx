@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import { baseAPI } from '../../userConfig/baseAPI';
-import './VCoveSlider.css';
 
 
 const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
@@ -57,7 +56,7 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
         try {
             baseAPI.post('colorChange', data)
                 .then((res) => {
-                    console.log(res.data);
+                    console.log(JSON.stringify(res.data));
                 });
         } catch (error) {
             console.log('Update color channel failed.', error);
@@ -92,18 +91,21 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
         sendColorData(event.target.value, true);
     };
 
+	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";
+	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
+
     return (
 
-        <div className="cove-slider-group">
+        <div className="flex flex-col items-center w-32">
 
             <button
-                className={channelState.value > 0 ? "toggle-button-on" : "toggle-button"}
+                className={ channelState.value > 0 ? `${toggleButtonOn}` : `${toggleButton}` }
                 onClick={handleToggleButton}
             >
                 {channelState.name.toUpperCase()}<br />{channelState.value > 0 ? "On" : "Off"}
             </button>
 
-            <label className="cove-text">{
+            <label className="text-center text-red-500 text-xl py-2 px-2 m-4">{
                 channelState.name.toUpperCase()}
                 <br />
                 {channelState.value.toFixed(3)}

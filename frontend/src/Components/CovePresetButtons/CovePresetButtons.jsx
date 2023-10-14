@@ -8,6 +8,7 @@ const CovePresetButtons = ({ presets, channelState, setState, setMasterValue, se
         // Copy channelState to array of objects.
         const allChannels = [];
         Object.values(channelState).forEach(channel => {
+			console.log(channel)
             allChannels.push(channel);
         });
 
@@ -65,7 +66,10 @@ const CovePresetButtons = ({ presets, channelState, setState, setMasterValue, se
                     <button
                         key={preset.preset}
                         className="preset-button"
-                        onClick={() => { sendPresetData(preset.id) }}
+                        onClick={() => { 
+							console.log(`preset selected: ${JSON.stringify(preset)}`)
+							sendPresetData(preset)
+						}}
                     >
                         {preset.label}
                     </button>
