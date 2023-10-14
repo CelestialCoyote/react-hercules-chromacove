@@ -5,7 +5,6 @@ import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
 import VCoveSlider from '../../components/VCoveSlider/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider/CoveMasterSlider';
 import { baseAPI } from '../../userConfig/baseAPI';
-import './CoveControl.css';
 
 
 const CoveControl = () => {
@@ -65,11 +64,11 @@ const CoveControl = () => {
 
             {!isEditOpen &&
 
-                <div className="dmx-lighting-control">
+                <div className="flex flex-1">
 
-                    <div className="all-channels">
+                    <div className="flex flex-1 flex-col w-1/2 m-6">
 
-                        <div className="single-channel-container">
+                        <div className="flex flex-1 justify-between">
 
                             {channelData.map(channel =>
                                 <VCoveSlider
@@ -83,7 +82,7 @@ const CoveControl = () => {
 
                         </div>
 
-                        <div className="master-channel">
+                        <div className="flex flex-col mt-4">
 
                             <CoveMasterSlider
                                 channelData={channelData}
@@ -97,7 +96,7 @@ const CoveControl = () => {
 
                     </div>
 
-                    <div className="presets-fade-rate">
+                    <div className="flex flex-col w-1/2">
 
                         <CovePresetButtons
                             presets={presets}

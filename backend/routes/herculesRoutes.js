@@ -201,6 +201,27 @@ router.post('/colorChange', (req, res) => {
     }
 });
 
+router.post('/colorChangeSlider', (req, res) => {
+    try {
+        const data = req.body;
+		console.log(data);
+
+        if (!data)
+            return res
+                .status(400)
+                .send('No channelData received.');
+
+        return res
+            .status(200)
+            .send('Status: 200 - single color');
+    } catch (error) {
+        console.log(error);
+        return res
+            .status(500)
+            .send(`Internal Server Error: ${error}`);
+    }
+});
+
 // Handles Master color slider and associated toggle button.
 router.post('/masterChange', (req, res) => {
     try {

@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 import RGBCove from './pages/RGBCove/RGBCove';
-import CoveControl from './pages/RGBCove2/CoveControl';
+import CoveControl from './pages/CoveControl/CoveControl';
 import StarMachineLamps from './pages/StarMachineLamps/StarMachineLamps';
 import StarMachineMotions from './pages/StarMachineMotions/StarMachineMotions';
 

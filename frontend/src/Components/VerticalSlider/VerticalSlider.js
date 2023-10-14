@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import { baseAPI } from '../../userConfig/baseAPI';
-import './VerticalSlider.css';
 
 
 const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
@@ -23,22 +22,25 @@ const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
             "level": event.target.value
         };
 
-        // try {
-        //     baseAPI.post('colorChangeSlider', data)
-        //         .then((res) => {
-        //             console.log(res.data);
-        //         });
-        // } catch (error) {
-        //     console.log('Update color channel failed.', error);
-        // };
+        try {
+            baseAPI.post('colorChangeSlider', data)
+                .then((res) => {
+                    console.log(res.data);
+                });
+        } catch (error) {
+            console.log('Update color channel failed.', error);
+        };
     };
+
+	const coveButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl w-24 hover:border-red-300 hover:text-red-300";
+	const coveButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl w-24 hover:bg-red-300 hover:border-red-300";
 
     return (
 
-        <div className="cove-slider-group">
+        <div className="flex flex-col items-center w-32">
 
             <button
-                className={isOff ? "cove-button" : "cove-button-on"}
+                className={isOff ? `${coveButton}` : `${coveButtonOn}`}
                 onClick={() => {
                     if (level > 0) {
                         setTemp(level);
@@ -58,7 +60,10 @@ const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
                 {coveColor} {isOff ? "On" : "Off"}
             </button>
 
-            <label className="cove-text">{coveColor}</label>
+            <label
+				className="text-red-500 text-2xl m-4">
+					{coveColor}
+				</label>
 
             <Slider
                 sx={{
@@ -85,28 +90,6 @@ const VerticalCoveSlider2 = ({ coveColor, color, setLevel, level }) => {
                 max={1.000}
                 step={0.001}
                 value={level}
-//                onChange={(e) => {
-//                    setLevel(e.target.value);
-//                    if (e.target.value > 0) setIsOff(false);
-//                    if (e.target.value === 0) {
-//                        setTemp(0);
-//                        setIsOff(true);
-//                    }
-//
-//                    let data = {
-//                        "channel": coveColor,
-//                        "level": level
-//                    };
-//            
-//                    try {
-//                        baseAPI.post('colorChangeSlider', data)
-//                            .then((res) => {
-//                                console.log(res.data);
-//                            });
-//                    } catch (error) {
-//                        console.log('Update color channel failed.', error);
-//                    };
-//                }}
                 onChange={handleSliderChange}
             />
 

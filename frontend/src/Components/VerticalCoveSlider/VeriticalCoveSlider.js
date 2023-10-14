@@ -22,14 +22,14 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 			"level": event.target.value
 		};
 
-		//try {
-		//    baseAPI.post('colorChangeSlider', data)
-		//        .then((res) => {
-		//            console.log(res.data);
-		//        });
-		//} catch (error) {
-		//    console.log('Update color channel failed.', error);
-		//};
+		try {
+		   baseAPI.post('colorChangeSlider', data)
+		       .then((res) => {
+		           console.log(res.data);
+		       });
+		} catch (error) {
+		   console.log('Update color channel failed.', error);
+		};
 	};
 
 
