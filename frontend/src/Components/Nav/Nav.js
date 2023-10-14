@@ -18,7 +18,7 @@ const Nav = () => {
     };
 
     return (
-        <nav className="Nav">
+        <nav className="flex justify-between items-center w-100% h-12 bg-slate-400">
             <label>Name<br></br>Planetarium</label>
             <ul>
                 {/*<li><Link to="/">RGB<br></br>Cove</Link></li>*/}
