@@ -58,6 +58,7 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 		if (level > 0.000) {
 			setTemp(level);
 			newLevel = 0.000;
+			setIsOff(true);
 		} else {
 			if (temp === 0.000) {
 				setTemp(1.000);
@@ -66,6 +67,7 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 				setLevel(temp);
 				newLevel = temp;
 			}
+			setIsOff(false);
 		}
 	};
 

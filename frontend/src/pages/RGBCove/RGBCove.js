@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import VerticalCoveSlider from '../../Components/VerticalCoveSlider/VeriticalCoveSlider';
+//import VerticalCoveSlider from '../../Components/VerticalCoveSlider/VeriticalCoveSlider';
+import VerticalCoveSlider2 from '../../Components/VerticalCoveSlider2/VerticalCoveSlider2'
 import MasterSlider from '../../Components/MasterSlider/MasterSlider';
 import './RGBCove.css';
 
@@ -19,13 +20,16 @@ const RGBCove = () => {
 
             <div className="all-channels">
 
-                <div className="single-channel-container">
+                <div className="flex h-full">
+{/* 
+                    <VerticalCoveSlider coveColor="Red" color="#bb0000" setLevel={setRed} level={red} /> */}
+					<VerticalCoveSlider2 coveColor="Red" color="#bb0000" setLevel={setRed} level={red} />
 
-                    <VerticalCoveSlider coveColor="Red" color="#bb0000" setLevel={setRed} level={red} />
+                    {/* <VerticalCoveSlider coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} /> */}
+					<VerticalCoveSlider2 coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} />
 
-                    <VerticalCoveSlider coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} />
-
-                    <VerticalCoveSlider coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} />
+                    {/* <VerticalCoveSlider coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} /> */}
+					<VerticalCoveSlider2 coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} />
 
                 </div>
 
