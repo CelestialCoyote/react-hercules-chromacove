@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import VerticalSlider from '../../components/VerticalSlider/VerticalSlider'
+import { useState } from 'react';
+import CoveSliderVertical from '../../components/CoveSliderVertical/CoveSliderVerical';
 import MasterSlider from '../../components/MasterSlider/MasterSlider';
 
 
@@ -19,11 +19,9 @@ const RGBCove = () => {
             <div className="flex flex-1 flex-col">
 
                 <div className="flex h-full justify-between">
-
-					<VerticalSlider coveColor="Red" color="#bb0000" setLevel={setRed} level={red} />
-					<VerticalSlider coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} />
-					<VerticalSlider coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} />
-
+					<CoveSliderVertical coveColor="Red" color="#bb0000" setLevel={setRed} level={red} />
+					<CoveSliderVertical coveColor="Grn" color="#00bb00" setLevel={setGrn} level={grn} />
+					<CoveSliderVertical coveColor="Blu" color="#0077bb" setLevel={setBlu} level={blu} />
                 </div>
 
                 <div className="flex flex-col mt-4">

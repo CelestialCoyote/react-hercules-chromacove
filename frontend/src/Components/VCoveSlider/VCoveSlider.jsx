@@ -63,6 +63,14 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
         };
     };
 
+	const handleColorChange = (event) => {
+        updateChannelState(channelState.id, event.target.value);
+
+        if (event.target.value === 0.000) setTemp(0);
+
+        sendColorData(event.target.value, true);
+    };
+
     const handleToggleButton = () => {
         let newLevel;
         if (channelState.value > 0.000) {
@@ -81,14 +89,6 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
         }
 
         sendColorData(newLevel);
-    };
-
-    const handleColorChange = (event) => {
-        updateChannelState(channelState.id, event.target.value);
-
-        if (event.target.value === 0.000) setTemp(0);
-
-        sendColorData(event.target.value, true);
     };
 
 	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";

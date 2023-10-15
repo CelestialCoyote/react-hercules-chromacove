@@ -3,35 +3,10 @@ import Slider from '@mui/material/Slider';
 import { baseAPI } from '../../userConfig/baseAPI';
 
 
-const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
+const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
 
 	const [isOff, setIsOff] = useState(true);
 	const [temp, setTemp] = useState(0);
-
-	// Moved code to external function because it has more code than previously.
-	const handleSliderChange = (event) => {
-		setLevel(event.target.value);
-		if (event.target.value > 0) setIsOff(false);
-		if (event.target.value === 0) {
-			setTemp(0);
-			setIsOff(true);
-		}
-
-		let data = {
-			"channel": coveColor,
-			"level": event.target.value
-		};
-
-		try {
-		   baseAPI.post('colorChangeSlider', data)
-		       .then((res) => {
-		           console.log(res.data);
-		       });
-		} catch (error) {
-		   console.log('Update color channel failed.', error);
-		};
-	};
-
 
 	const debounce = (func, wait, immediate) => {
 		let timeout;
@@ -53,41 +28,60 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 		};
 	};
 
+	const handleSliderChange = (event) => {
+		setLevel(event.target.value);
+		if (event.target.value > 0) setIsOff(false);
+		if (event.target.value === 0) {
+			setTemp(0);
+			setIsOff(true);
+		}
+
+		let data = {
+			"channel": coveColor,
+			"level": event.target.value
+		};
+
+		try {
+			baseAPI.post('colorChangeSlider', data)
+				.then((res) => {
+					console.log(res.data);
+				});
+		} catch (error) {
+			console.log('Update color channel failed.', error);
+		};
+	};
+
 	const handleToggleButton = () => {
-		let newLevel;
 		if (level > 0.000) {
 			setTemp(level);
-			newLevel = 0.000;
+			setLevel(0.000);
 			setIsOff(true);
 		} else {
 			if (temp === 0.000) {
 				setTemp(1.000);
-				newLevel = 1.000;
+				setLevel(1.000)
 			} else {
 				setLevel(temp);
-				newLevel = temp;
 			}
 			setIsOff(false);
-		}
+		};
 	};
+
+	const coveButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl w-24 hover:border-red-300 hover:text-red-300";
+	const coveButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl w-24 hover:bg-red-300 hover:border-red-300";
 
 	return (
 
 		<div className="flex flex-col items-center">
 
 			<button
-				className={
-					level > 0 ?
-						"toggle-button-on mb-8" :
-						"toggle-button mb-8"
-				}
-
+                className={isOff ? `${coveButton}` : `${coveButtonOn}`}
 				onClick={handleToggleButton}
-			>
-				{coveColor.toUpperCase()}<br />{level > 0 ? "On" : "Off"}
-			</button>
+            >
+                {coveColor} {isOff ? "On" : "Off"}
+            </button>
 
-			<label className="text-xl text-red-500 mb-6">{
+			<label className="text-xl text-red-500 m-6">{
 				coveColor.toUpperCase()}
 			</label>
 
@@ -126,4 +120,4 @@ const VerticalCoveSlider = ({ coveColor, color, setLevel, level }) => {
 };
 
 
-export default VerticalCoveSlider;
+export default CoveSliderVertical;
