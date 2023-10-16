@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Nav from './components/Nav/Nav';
-import Footer from './components/Footer/Footer';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
 import RGBCove from './pages/RGBCove/RGBCove';
 import CoveControl from './pages/CoveControl/CoveControl';
 import StarMachineLamps from './pages/StarMachineLamps/StarMachineLamps';

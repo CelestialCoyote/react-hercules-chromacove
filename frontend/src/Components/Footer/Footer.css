@@ -1,9 +1,0 @@
-.Footer {
-    background-color: #222;
-    color: red;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75em;
-    place-content: center;
-    width: 100%;
-}
