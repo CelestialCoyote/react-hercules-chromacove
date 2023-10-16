@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
 //import { baseAPI } from '../../userConfig/baseAPI';
-import './MasterSlider.css';
 
 
 const MasterSlider = ({ channelData, channelState, masterValue, setMasterValue, duration }) => {
@@ -92,13 +91,20 @@ const MasterSlider = ({ channelData, channelState, masterValue, setMasterValue, 
         sendColorData(data);
     };
 
+	const masterButtonBase = "border-red-500 border-2 text-xl rounded-xl w-32";
+	const masterButton = "bg-black text-red-500 hover:border-red-300 hover:text-red-300";
+	const masterButtonOn = "bg-red-500 text-black hover:bg-red-300 hover:border-red-300";
+
     return (
+        <div className="flex flex-col items-center w-full">
 
-        <div className="master-slider-group">
+            <label
+				className="text-red-500 text-center text-2xl mt-2 mb-2"
+			>
+				Master / Intensity
+			</label>
 
-            <label className="master-text-label">Master / Intensity</label>
-
-            <div className="master-slider-and-value">
+            <div className="flex items-center p-2 w-full">
                 <Slider
                     sx={{
                         //color: { color },
@@ -125,12 +131,20 @@ const MasterSlider = ({ channelData, channelState, masterValue, setMasterValue, 
                     onChange={debounce(handleColorChange)}
                 />
 
-                <label className="master-text">{masterValue.toFixed(3)}</label>
+                <label
+					className="text-red-500 text-center text-2xl ml-6"
+				>
+					{masterValue.toFixed(3)}
+				</label>
 
             </div>
 
             <button
-                className={isOff ? "master-button" : "master-button-on"}
+				className={isOff ? 
+					`${masterButtonBase} ${masterButton}`
+					:
+					`${masterButtonBase} ${masterButtonOn}`
+				}
                 onClick={handleToggleButton}
             >
                 Master {isOff ? "Off" : "On"}

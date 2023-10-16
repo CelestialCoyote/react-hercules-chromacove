@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-import { baseAPI } from '../../userConfig/baseAPI';
+import { baseAPI } from '../userConfig/baseAPI';
 
 
 const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
@@ -67,15 +67,20 @@ const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
 		};
 	};
 
-	const coveButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl w-24 hover:border-red-300 hover:text-red-300";
-	const coveButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl w-24 hover:bg-red-300 hover:border-red-300";
+	const coveButtonBase = "border-red-500 border-2 text-xl rounded-xl w-24";
+	const coveButton = "bg-black text-red-500 hover:border-red-300 hover:text-red-300";
+	const coveButtonOn = "bg-red-500 text-black hover:bg-red-300 hover:border-red-300";
 
 	return (
 
 		<div className="flex flex-col items-center">
 
 			<button
-                className={isOff ? `${coveButton}` : `${coveButtonOn}`}
+                className={isOff ? 
+					`${coveButtonBase} ${coveButton}`
+					:
+					`${coveButtonBase} ${coveButtonOn}`
+				}
 				onClick={handleToggleButton}
             >
                 {coveColor} {isOff ? "On" : "Off"}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import CoveSliderVertical from '../../components/CoveSliderVertical/CoveSliderVerical';
-import MasterSlider from '../../components/MasterSlider/MasterSlider';
+import CoveSliderVertical from '../../components/CoveSliderVerical';
+import MasterSlider from '../../components/MasterSlider';
 
 
 const RGBCove = () => {
