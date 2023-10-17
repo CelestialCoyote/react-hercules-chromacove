@@ -46,9 +46,6 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
             "id": channelState.id,
             "name": channelState.name,
             "value": currentValue,
-            "bitResolution": channelState.bitResolution,
-            "lowByteChannel": channelState.lowByteChannel,
-            "highByteChannel": channelState.highByteChannel,
             "slider": channelState.slider
         });
         data.push({ "name": "master", "value": masterValue, "duration": channelDuration });

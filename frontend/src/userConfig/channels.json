@@ -1,0 +1,26 @@
+[
+    {
+        "id": 101,
+        "name": "red",
+        "value": 0.000,
+        "slider": true
+    },
+    {
+        "id": 102,
+        "name": "grn",
+        "value": 0.000,
+        "slider": true
+    },
+    {
+        "id": 103,
+        "name": "blu",
+        "value": 0.000,
+        "slider": true
+    },
+    {
+        "id": 104,
+        "name": "wht",
+        "value": 0.000,
+        "slider": true
+    }
+]

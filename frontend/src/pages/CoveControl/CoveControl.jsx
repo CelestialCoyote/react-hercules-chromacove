@@ -5,11 +5,12 @@ import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
 import VCoveSlider from '../../components/VCoveSlider/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider/CoveMasterSlider';
 import { baseAPI } from '../../userConfig/baseAPI';
+import channels from '../../userConfig/channels.json';
 
 
 const CoveControl = () => {
 
-    const [channelData, setChannelData] = useState([]);
+    const [channelData, setChannelData] = useState(channels);
     const [presets, setPresets] = useState([]);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [masterValue, setMasterValue] = useState(1.000);
@@ -19,6 +20,7 @@ const CoveControl = () => {
     const [state, setState] = useState({}); // Could probably merge with channelData
     const DEFAULT_VAL = 0.000;
 
+	console.log(channels);
 
     const addChannels = (channelData) => {
         // Mapped channelId to its useState.
@@ -27,21 +29,21 @@ const CoveControl = () => {
         });
     };
 
-    // Get ChannelData and Preset information from backend.
+    //Get ChannelData and Preset information from backend.
     useEffect(() => {
         try {
-            baseAPI.get('channelData')
-                .then((res) => {
-                    setChannelData(res.data); // Unneeded since the next function mutates the same state
-                    addChannels(res.data);
-                });
+            // baseAPI.get('channelData')
+            //     .then((res) => {
+                    setChannelData(channels); // Unneeded since the next function mutates the same state
+                    addChannels(channels);
+                //});
         } catch (error) {
             console.log('Get DMX channel data information failed.', error);
         }
 
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-    // Try to find a better solution for the above comment line to remove warning
-    // about missing dependency in useEffect.
+    //Try to find a better solution for the above comment line to remove warning
+    //about missing dependency in useEffect.
 
     useEffect(() => {
         try {
