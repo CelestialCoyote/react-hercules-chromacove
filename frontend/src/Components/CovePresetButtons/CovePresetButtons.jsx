@@ -2,13 +2,14 @@ import { baseAPI } from '../../userConfig/baseAPI';
 import './CovePresetButtons.css';
 
 
-const CovePresetButtons = ({ presets, channelState, setState, setMasterValue, setIsEditOpen }) => {
-
+const CovePresetButtons = ({ 
+	presets, channelState, setState, setMasterValue, setIsEditOpen
+}) => {
     const sendPresetData = (preset) => {
         // Copy channelState to array of objects.
         const allChannels = [];
         Object.values(channelState).forEach(channel => {
-			console.log(channel)
+			//console.log(channel)
             allChannels.push(channel);
         });
 
@@ -17,7 +18,9 @@ const CovePresetButtons = ({ presets, channelState, setState, setMasterValue, se
         allChannels.forEach(channel => channel.value = 0);
 
         // Create object to hold channels and values used by preset.
-        const presetChannels = presets[preset].channels;
+        //const presetChannels = presets[preset].channels;
+		const presetChannels = preset.channels;
+		//console.log(presetChannels);
 
         // For every color in Preset adjust the color value in allChannels.
         Object.keys(presetChannels).forEach(preset => {
@@ -67,7 +70,7 @@ const CovePresetButtons = ({ presets, channelState, setState, setMasterValue, se
                         key={preset.preset}
                         className="preset-button"
                         onClick={() => { 
-							console.log(`preset selected: ${JSON.stringify(preset)}`)
+							//console.log(`preset selected: ${JSON.stringify(preset)}`)
 							sendPresetData(preset)
 						}}
                     >

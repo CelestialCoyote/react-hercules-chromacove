@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
 
-const MasterSlider = ({ channelData, channelState, masterValue, setMasterValue, duration }) => {
+const MasterSlider = ({ color, channelData, channelState, masterValue, setMasterValue, duration }) => {
 
     const [isOff, setIsOff] = useState(false);
     const [temp, setTemp] = useState(1.000);
@@ -107,8 +107,7 @@ const MasterSlider = ({ channelData, channelState, masterValue, setMasterValue, 
             <div className="flex items-center p-2 w-full">
                 <Slider
                     sx={{
-                        //color: { color },
-                        color: "red",
+                        color: { color },
                         width: "100%",
                         '& .MuiSlider-thumb': {
                             borderRadius: '0.25rem',

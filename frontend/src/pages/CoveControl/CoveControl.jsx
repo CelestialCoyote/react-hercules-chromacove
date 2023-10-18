@@ -43,10 +43,10 @@ const CoveControl = () => {
 
 	useEffect(() => {
 		try {
-			baseAPI.get('presets')
-				.then((res) => {
-					setPresets(res.data);
-				});
+			// baseAPI.get('presets')
+			// 	.then((res) => {
+					setPresets(covePresets);
+				// });
 		} catch (error) {
 			console.log('Get Preset button information failed.', error);
 		}
@@ -83,6 +83,7 @@ const CoveControl = () => {
 						<div className="flex flex-col mt-4">
 
 							<CoveMasterSlider
+								color={"#ccaa77"}
 								channelData={channelData}
 								channelState={state}
 								setMasterValue={setMasterValue}

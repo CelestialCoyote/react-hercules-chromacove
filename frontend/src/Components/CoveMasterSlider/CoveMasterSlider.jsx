@@ -4,7 +4,7 @@ import { baseAPI } from '../../userConfig/baseAPI';
 import './CoveMasterSlider.css';
 
 
-const CoveMasterSlider = ({ channelData, channelState, masterValue, setMasterValue, duration }) => {
+const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMasterValue, duration }) => {
 
     const [isOff, setIsOff] = useState(false);
     const [temp, setTemp] = useState(1.000);
@@ -101,8 +101,7 @@ const CoveMasterSlider = ({ channelData, channelState, masterValue, setMasterVal
             <div className="master-slider-and-value">
                 <Slider
                     sx={{
-                        //color: { color },
-                        color: "red",
+                        color: { color },
                         width: "100%",
                         '& .MuiSlider-thumb': {
                             borderRadius: '0.25rem',
