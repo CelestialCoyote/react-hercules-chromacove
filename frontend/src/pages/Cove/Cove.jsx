@@ -60,10 +60,8 @@ export default function Cove() {
 
 						</div>
 
-						<label
-							className="text-red-500"
-						>
-							Red<br />{redValue.toFixed(3)}
+						<label className="text-red-500">
+							Red
 						</label>
 
 						<Slider
@@ -98,20 +96,22 @@ export default function Cove() {
 							}}
 						/>
 
+						<label className="text-red-500">
+							{redValue.toFixed(3)}
+						</label>
+
 					</div>
 
-					<div className="rgbw-slider-container">
-
-						<div className="fade-buttons">
-
+					<div className="flex flex-col h-96 items-center gap-6">
+						<div className="flex flex-col gap-2">
 							<button
-								className="cove-button grn-button"
+								className="text-green-500 h-12 border-2 border-green-500 rounded-xl px-2"
 								onClick={() => {
 									setGrnValue(1.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
-									// 		{ "grn": 1.000 },
+									// 		{ "red": 1.000 },
+									// 		{ "grn": -1 },
 									// 		{ "blu": -1 },
 									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
@@ -123,13 +123,13 @@ export default function Cove() {
 							</button>
 
 							<button
-								className="cove-button grn-button"
+								className="text-green-500 h-12 border-2 border-green-500 rounded-xl px-2"
 								onClick={() => {
 									setGrnValue(0.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
-									// 		{ "grn": 0.000 },
+									// 		{ "red": 0.000 },
+									// 		{ "grn": -1 },
 									// 		{ "blu": -1 },
 									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
@@ -142,10 +142,8 @@ export default function Cove() {
 
 						</div>
 
-						<label
-							className="slider-label slider-grn"
-						>
-							Grn<br />{grnValue.toFixed(3)}
+						<label className="text-grn-500">
+							Grn
 						</label>
 
 						<Slider
@@ -173,66 +171,67 @@ export default function Cove() {
 							min={0.000}
 							max={1.000}
 							step={0.001}
-							value={grnValue}
+							value={redValue}
 							onChange={(e) => {
 								setGrnValue(e.target.value);
 								//handleSliderChange();
 							}}
 						/>
 
+						<label className="text-green-500">
+							{grnValue.toFixed(3)}
+						</label>
+
 					</div>
 
-					<div className="rgbw-slider-container">
 
-						<div className="fade-buttons">
-
+					<div className="flex flex-col h-96 items-center gap-6">
+						<div className="flex flex-col gap-2">
 							<button
-								className="cove-button blu-button"
+								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
-									setBluValue(1.000);
+									setRedValue(1.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
+									// 		{ "red": 1.000 },
 									// 		{ "grn": -1 },
-									// 		{ "blu": 1.000 },
+									// 		{ "blu": -1 },
 									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
 									// 		{ "duration": duration }
 									// 	])
 								}}
 							>
-								Blu On
+								Red On
 							</button>
 
 							<button
-								className="cove-button blu-button"
+								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
-									setBluValue(0.000);
+									setRedValue(0.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
+									// 		{ "red": 0.000 },
 									// 		{ "grn": -1 },
-									// 		{ "blu": 0.000 },
+									// 		{ "blu": -1 },
 									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
 									// 		{ "duration": duration }
 									// 	])
 								}}
 							>
-								Blu Off
+								Red Off
 							</button>
 
 						</div>
 
-						<label
-							className="slider-label slider-blu"
-						>
-							Blu<br />{bluValue.toFixed(3)}
+						<label className="text-red-500">
+							Red
 						</label>
 
 						<Slider
 							sx={{
-								color: "#0077bb",
+								color: "#bb0000",
 								height: "100%",
 								'& .MuiSlider-thumb': {
 									borderRadius: '0.25rem',
@@ -255,66 +254,66 @@ export default function Cove() {
 							min={0.000}
 							max={1.000}
 							step={0.001}
-							value={bluValue}
+							value={redValue}
 							onChange={(e) => {
-								setBluValue(e.target.value);
+								setRedValue(e.target.value);
 								//handleSliderChange();
 							}}
 						/>
 
+						<label className="text-red-500">
+							{redValue.toFixed(3)}
+						</label>
+
 					</div>
 
-					<div className="rgbw-slider-container">
-
-						<div className="fade-buttons">
-
+					<div className="flex flex-col h-96 items-center gap-6">
+						<div className="flex flex-col gap-2">
 							<button
-								className="cove-button wht-button"
+								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
-									setWhtValue(1.000);
+									setRedValue(1.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
+									// 		{ "red": 1.000 },
 									// 		{ "grn": -1 },
 									// 		{ "blu": -1 },
-									// 		{ "wht": 1.000 },
+									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
 									// 		{ "duration": duration }
 									// 	])
 								}}
 							>
-								Wht On
+								Red On
 							</button>
 
 							<button
-								className="cove-button wht-button"
+								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
-									setWhtValue(0.000);
+									setRedValue(0.000);
 									// handleButtonChange(
 									// 	[
-									// 		{ "red": -1 },
+									// 		{ "red": 0.000 },
 									// 		{ "grn": -1 },
 									// 		{ "blu": -1 },
-									// 		{ "wht": 0.000 },
+									// 		{ "wht": -1 },
 									// 		{ "master": masterValue },
 									// 		{ "duration": duration }
 									// 	])
 								}}
 							>
-								Wht Off
+								Red Off
 							</button>
 
 						</div>
 
-						<label
-							className="slider-label slider-wht"
-						>
-							Wht<br />{whtValue.toFixed(3)}
+						<label className="text-red-500">
+							Red
 						</label>
 
 						<Slider
 							sx={{
-								color: "#888888",
+								color: "#bb0000",
 								height: "100%",
 								'& .MuiSlider-thumb': {
 									borderRadius: '0.25rem',
@@ -337,109 +336,118 @@ export default function Cove() {
 							min={0.000}
 							max={1.000}
 							step={0.001}
-							value={whtValue}
+							value={redValue}
 							onChange={(e) => {
-								setWhtValue(e.target.value);
+								setRedValue(e.target.value);
 								//handleSliderChange();
 							}}
 						/>
+
+						<label className="text-red-500">
+							{redValue.toFixed(3)}
+						</label>
 
 					</div>
 
-				</div>
 
-				<div className="master-control">
 
-					<label
-						className="cove-label"
-					>
-						Master / Intensity
-					</label>
 
-					<div className="master-container">
 
-						<Slider
-							sx={{
-								color: "#aa5500",
-								marginLeft: "1.5rem",
-								marginRight: "1.5rem",
-								width: "100%",
-								'& .MuiSlider-thumb': {
-									borderRadius: '0.25rem',
-									height: "3.0rem",
-									width: "1.5rem"
-								},
-								'& .MuiSlider-rail': {
-									borderRadius: '0.25rem',
-									height: "1.0rem"
-								},
-								'& .MuiSlider-track': {
-									height: "0.5rem"
-								},
-								'& input[type="range"]': {
-									WebkitAppearance: 'slider-vertical',
-								},
-							}}
-							defaultValue={0.000}
-							min={0.000}
-							max={1.000}
-							step={0.001}
-							value={masterValue}
-							onChange={(e) => {
-								setMasterValue(e.target.value);
-								//handleSliderChange();
-							}}
-						/>
 
-						<div>
 
-							<label
-								className="slider-label"
-							>
-								{masterValue.toFixed(3)}
-							</label>
+					<div className="master-control">
+
+						<label
+							className="cove-label"
+						>
+							Master / Intensity
+						</label>
+
+						<div className="master-container">
+
+							<Slider
+								sx={{
+									color: "#aa5500",
+									marginLeft: "1.5rem",
+									marginRight: "1.5rem",
+									width: "100%",
+									'& .MuiSlider-thumb': {
+										borderRadius: '0.25rem',
+										height: "3.0rem",
+										width: "1.5rem"
+									},
+									'& .MuiSlider-rail': {
+										borderRadius: '0.25rem',
+										height: "1.0rem"
+									},
+									'& .MuiSlider-track': {
+										height: "0.5rem"
+									},
+									'& input[type="range"]': {
+										WebkitAppearance: 'slider-vertical',
+									},
+								}}
+								defaultValue={0.000}
+								min={0.000}
+								max={1.000}
+								step={0.001}
+								value={masterValue}
+								onChange={(e) => {
+									setMasterValue(e.target.value);
+									//handleSliderChange();
+								}}
+							/>
+
+							<div>
+
+								<label
+									className="slider-label"
+								>
+									{masterValue.toFixed(3)}
+								</label>
+
+							</div>
 
 						</div>
 
-					</div>
+						<div className="master-buttons">
 
-					<div className="master-buttons">
+							<button
+								className="cove-button"
+								onClick={() => {
+									setMasterValue(1.000);
+									// handleButtonChange(
+									// 	[
+									// 		{ "red": redValue },
+									// 		{ "grn": grnValue },
+									// 		{ "blu": bluValue },
+									// 		{ "wht": whtValue },
+									// 		{ "master": 1.000 },
+									// 		{ "duration": duration }
+									// 	])
+								}}
+							>
+								Master On
+							</button>
 
-						<button
-							className="cove-button"
-							onClick={() => {
-								setMasterValue(1.000);
-								// handleButtonChange(
-								// 	[
-								// 		{ "red": redValue },
-								// 		{ "grn": grnValue },
-								// 		{ "blu": bluValue },
-								// 		{ "wht": whtValue },
-								// 		{ "master": 1.000 },
-								// 		{ "duration": duration }
-								// 	])
-							}}
-						>
-							Master On
-						</button>
-
-						<button
-							className="cove-button"
-							onClick={() => {
-								setMasterValue(0.000);
-								// handleButtonChange(
-								// 	[
-								// 		{ "red": redValue },
-								// 		{ "grn": grnValue },
-								// 		{ "blu": bluValue },
-								// 		{ "wht": whtValue },
-								// 		{ "master": 0.000 },
-								// 		{ "duration": duration }
-								// 	])
-							}}
-						>
-							Master Off
-						</button>
+							<button
+								className="cove-button"
+								onClick={() => {
+									setMasterValue(0.000);
+									// handleButtonChange(
+									// 	[
+									// 		{ "red": redValue },
+									// 		{ "grn": grnValue },
+									// 		{ "blu": bluValue },
+									// 		{ "wht": whtValue },
+									// 		{ "master": 0.000 },
+									// 		{ "duration": duration }
+									// 	])
+								}}
+							>
+								Master Off
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
