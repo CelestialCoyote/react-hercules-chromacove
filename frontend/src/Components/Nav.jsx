@@ -33,6 +33,7 @@ const Nav = () => {
             <div
 				className="flex justify-between w-3/4"
 			>
+				<CustomLink to="/cove">Cove</CustomLink>
                 <CustomLink to="/rgbcove">RGB<br></br>Cove</CustomLink>
 				<CustomLink to="/covecontrol">Cove<br></br>Control</CustomLink>
                 <CustomLink to="/starmachinelamps">StarMachine<br></br>Lamps</CustomLink>
