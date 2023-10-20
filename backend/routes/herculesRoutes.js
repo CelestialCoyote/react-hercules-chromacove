@@ -105,6 +105,7 @@ const sendDMX = (data) => {
 
 // Send all channelData to Frontend.
 router.get('/channelData', (req, res) => {
+	console.lon(req)
     const channelData = getChannelData();
 
     try {

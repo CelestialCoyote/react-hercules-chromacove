@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Slider } from '@mui/material';
 import channels from '../../userConfig/channels.json';
 import covePresets from '../../userConfig/presets.json';
+import { baseAPI } from '../../userConfig/baseAPI';
 
 
 export default function Cove() {
@@ -16,6 +17,41 @@ export default function Cove() {
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 
+	const handleSliderChange = async () => {
+		let data = {
+			"redLevel": redValue,
+			"grnLevel": grnValue,
+			"bluLevel": bluValue,
+			"whtLevel": whtValue,
+			"masterLevel": masterValue
+		};
+
+		console.log(data);
+
+		try {
+            baseAPI.post('colorChange', data)
+                .then((res) => {
+                    console.log(res.data);
+                });
+        } catch (error) {
+            console.log('Update color channel failed.', error);
+        };
+	};
+
+	const handleButtonChange = async (colorChange) => {
+		console.log(colorChange);
+
+		try {
+            baseAPI.post('colorChange', colorChange)
+                .then((res) => {
+                    console.log(res.colorChange);
+                });
+        } catch (error) {
+            console.log('Update color channel failed.', error);
+        };
+	};
+
+
 	return (
 		<div className="h-screen">
 			<div className="flex flex-col">
@@ -26,15 +62,15 @@ export default function Cove() {
 								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
 									setRedValue(1.000);
-									// handleButtonChange(
-									// 	[
-									// 		{ "red": 1.000 },
-									// 		{ "grn": -1 },
-									// 		{ "blu": -1 },
-									// 		{ "wht": -1 },
-									// 		{ "master": masterValue },
-									// 		{ "duration": duration }
-									// 	])
+									handleButtonChange(
+										[
+											{ "red": 1.000 },
+											{ "grn": -1 },
+											{ "blu": -1 },
+											{ "wht": -1 },
+											{ "master": masterValue },
+											{ "duration": duration }
+										])
 								}}
 							>
 								Red On
@@ -44,15 +80,15 @@ export default function Cove() {
 								className="text-red-500 h-12 border-2 border-red-500 rounded-xl px-2"
 								onClick={() => {
 									setRedValue(0.000);
-									// handleButtonChange(
-									// 	[
-									// 		{ "red": 0.000 },
-									// 		{ "grn": -1 },
-									// 		{ "blu": -1 },
-									// 		{ "wht": -1 },
-									// 		{ "master": masterValue },
-									// 		{ "duration": duration }
-									// 	])
+									handleButtonChange(
+										[
+											{ "red": 0.000 },
+											{ "grn": -1 },
+											{ "blu": -1 },
+											{ "wht": -1 },
+											{ "master": masterValue },
+											{ "duration": duration }
+										])
 								}}
 							>
 								Red Off
@@ -92,7 +128,7 @@ export default function Cove() {
 							value={redValue}
 							onChange={(e) => {
 								setRedValue(e.target.value);
-								//handleSliderChange();
+								handleSliderChange();
 							}}
 						/>
 
