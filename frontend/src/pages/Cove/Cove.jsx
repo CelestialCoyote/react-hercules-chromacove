@@ -17,6 +17,45 @@ export default function Cove() {
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 
+	const [allValues, setAllValues] = useState(
+		{
+			"id": 1,
+			"name": "red",
+			"value": 0.000,
+			"slider": true
+		},
+		{
+			"id": 2,
+			"name": "grn",
+			"value": 0.000,
+			"slider": true
+		},
+		{
+			"id": 3,
+			"name": "blu",
+			"value": 0.000,
+			"slider": true
+		},
+		{
+			"id": 4,
+			"name": "wht",
+			"value": 0.000,
+			"slider": true
+		}
+	);
+
+	const changeHandler = e => {
+		setAllValues({ ...allValues, [e.target.name]: e.target.value })
+	}
+
+
+	const addChannels = (channelData) => {
+		// Mapped channelId to its useState.
+		channelData.forEach(channel => {
+			setState(prevState => ({ ...prevState, [channel.id]: { ...channel, value: DEFAULT_VAL } }));
+		});
+	};
+
 	const handleSliderChange = async () => {
 		let data = {
 			"redLevel": redValue,
@@ -29,26 +68,26 @@ export default function Cove() {
 		console.log(data);
 
 		try {
-            baseAPI.post('colorChange', data)
-                .then((res) => {
-                    console.log(res.data);
-                });
-        } catch (error) {
-            console.log('Update color channel failed.', error);
-        };
+			baseAPI.post('colorChange', data)
+				.then((res) => {
+					console.log(res.data);
+				});
+		} catch (error) {
+			console.log('Update color channel failed.', error);
+		};
 	};
 
 	const handleButtonChange = async (colorChange) => {
 		console.log(colorChange);
 
 		try {
-            baseAPI.post('colorChange', colorChange)
-                .then((res) => {
-                    console.log(res.colorChange);
-                });
-        } catch (error) {
-            console.log('Update color channel failed.', error);
-        };
+			baseAPI.post('colorChange', colorChange)
+				.then((res) => {
+					console.log(res.colorChange);
+				});
+		} catch (error) {
+			console.log('Update color channel failed.', error);
+		};
 	};
 
 
