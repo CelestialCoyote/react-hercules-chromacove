@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-//import { baseAPI } from '../../userConfig/baseAPI';
+import { baseAPI } from '../userConfig/baseAPI';
 
 
 const MasterSlider = ({ color, channelData, channelState, masterValue, setMasterValue, duration }) => {
@@ -36,14 +36,14 @@ const MasterSlider = ({ color, channelData, channelState, masterValue, setMaster
         allColorData.push(data);
         console.log(`master allData: ${JSON.stringify(allColorData)}`);
 
-        //try {
-        //    baseAPI.post('masterChange', allColorData)
-        //        .then((res) => {
-        //            console.log(res.data);
-        //        });
-        //} catch (error) {
-        //    console.log('Update color channel failed.', error);
-        //};
+        try {
+           baseAPI.post('masterChange', allColorData)
+               .then((res) => {
+                   console.log(res.data);
+               });
+        } catch (error) {
+           console.log('Update color channel failed.', error);
+        };
     };
 
     const handleToggleButton = (event) => {

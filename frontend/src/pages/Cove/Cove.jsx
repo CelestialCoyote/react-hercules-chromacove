@@ -8,12 +8,16 @@ import channels from '../../userConfig/channels.json';
 
 
 export default function Cove() {
+	const [red, setRed] = useState(0.000);
+    const [grn, setGrn] = useState(0.000);
+    const [blu, setBlu] = useState(0.000);
+
 	const [channelData, setChannelData] = useState([]);
 	const [state, setState] = useState({});
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 	const [presets, setPresets] = useState(covePresets);
-	
+
 	const addChannels = (channelData) => {
 		// Mapped channelId to its useState.
 		channelData.forEach(channel => {
@@ -41,15 +45,27 @@ export default function Cove() {
 
 				<div className="flex flex-1 justify-between">
 
-					{channelData.map(channel => 
-						<VCoveSlider
-							key={channel.id}
-							channelState={state[channel.id]}
-							setState={setState}
-							masterValue={masterValue}
-							duration={duration}
-						/>
-					)}
+					<VCoveSlider
+						key={1}
+						channelState={red}
+						setState={setRed}
+						masterValue={masterValue}
+						duration={duration}
+					/>
+					<VCoveSlider
+						key={2}
+						channelState={grn}
+						setState={setGrn}
+						masterValue={masterValue}
+						duration={duration}
+					/>
+					<VCoveSlider
+						key={3}
+						channelState={blu}
+						setState={setBlu}
+						masterValue={masterValue}
+						duration={duration}
+					/>
 
 				</div>
 
@@ -75,7 +91,7 @@ export default function Cove() {
 					channelState={state}
 					setState={setState}
 					setMasterValue={setMasterValue}
-					//setIsEditOpen={setIsEditOpen}
+				//setIsEditOpen={setIsEditOpen}
 				/>
 
 				<FadeRateSelect

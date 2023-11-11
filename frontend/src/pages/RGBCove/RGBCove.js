@@ -10,6 +10,7 @@ const RGBCove = () => {
     const [grn, setGrn] = useState(0);
     const [blu, setBlu] = useState(0);
 
+	const [state, setState] = useState({});
     const [masterValue, setMasterValue] = useState(1.000);
     const [duration, setDuration] = useState(3);
     const [channelData, setChannelData] = useState([]);
@@ -74,7 +75,7 @@ const RGBCove = () => {
 
                     <MasterSlider
                         channelData={channelData}
-                        //channelState={state}
+                        channelState={state}
                         setMasterValue={setMasterValue}
                         masterValue={masterValue}
                         duration={duration}
