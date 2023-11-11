@@ -1,32 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider/CoveMasterSlider';
-import CovePresetButtons from '../../components/CovePresetButtons/CovePresetButtons';
-import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
-import covePresets from '../../userConfig/presets.json';
-import channels from '../../userConfig/channels.json';
+//import CovePresetButtons from '../../components/CovePresetButtons/CovePresetButtons';
+//import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
+//import covePresets from '../../userConfig/presets.json';
 
+
+const channels = [
+	{
+		"id": 1,
+		"name": "red",
+		"value": 0.000,
+		"slider": true
+	},
+	{
+		"id": 2,
+		"name": "grn",
+		"value": 0.000,
+		"slider": true
+	},
+	{
+		"id": 3,
+		"name": "blu",
+		"value": 0.000,
+		"slider": true
+	},
+];
 
 export default function Cove() {
-	const [red, setRed] = useState(0.000);
-    const [grn, setGrn] = useState(0.000);
-    const [blu, setBlu] = useState(0.000);
-
 	const [channelData, setChannelData] = useState([]);
 	const [state, setState] = useState({});
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
-	const [presets, setPresets] = useState(covePresets);
+	//const [presets, setPresets] = useState(covePresets);
+
+	const DEFAULT_VAL = 0.000;
 
 	const addChannels = (channelData) => {
 		// Mapped channelId to its useState.
 		channelData.forEach(channel => {
-			setState(prevState => ({ ...prevState, [channel.id]: { ...channel, value: 0.000 } }));
+			setState(prevState => ({ ...prevState, [channel.id]: { ...channel, value: DEFAULT_VAL } }));
 		});
 	};
 
 	//Get ChannelData and Preset information from backend.
 	useEffect(() => {
+		console.log('useEffect called')
 		try {
 			setChannelData(channels);
 			addChannels(channels);
@@ -44,28 +63,26 @@ export default function Cove() {
 			<div className="flex flex-1 flex-col w-1/2 m-6">
 
 				<div className="flex flex-1 justify-between">
+					{console.log(state)}
 
 					<VCoveSlider
-						key={1}
-						channelState={red}
-						setState={setRed}
+						channelState={state[0]}
+						setState={setState}
+						masterValue={masterValue}
+						duration={duration}
+					/>
+					{/* <VCoveSlider
+						channelState={state[channel[2]]}
+						setState={setState}
 						masterValue={masterValue}
 						duration={duration}
 					/>
 					<VCoveSlider
-						key={2}
-						channelState={grn}
-						setState={setGrn}
+						channelState={state[channel[3]]}
+						setState={setState}
 						masterValue={masterValue}
 						duration={duration}
-					/>
-					<VCoveSlider
-						key={3}
-						channelState={blu}
-						setState={setBlu}
-						masterValue={masterValue}
-						duration={duration}
-					/>
+					/> */}
 
 				</div>
 
@@ -86,7 +103,7 @@ export default function Cove() {
 
 			<div className="flex flex-col w-1/2">
 
-				<CovePresetButtons
+				{/* <CovePresetButtons
 					presets={presets}
 					channelState={state}
 					setState={setState}
@@ -97,7 +114,7 @@ export default function Cove() {
 				<FadeRateSelect
 					duration={duration}
 					setDuration={setDuration}
-				/>
+				/> */}
 
 			</div>
 
