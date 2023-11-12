@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CoveSliderVertical from '../../components/CoveSliderVerical';
 import MasterSlider from '../../components/MasterSlider';
 import { baseAPI } from '../../userConfig/baseAPI';
 
 
-const RGBCove = () => {
+export default function RGBCove() {
 	const [red, setRed] = useState(0.000);
 	const [grn, setGrn] = useState(0.000);
 	const [blu, setBlu] = useState(0.000);
@@ -86,6 +86,3 @@ const RGBCove = () => {
         </div>
     );
 };
-
-
-export default RGBCove;
