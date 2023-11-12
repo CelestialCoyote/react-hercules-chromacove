@@ -1,46 +1,52 @@
-//import { useEffect, useState } from 'react';
-//import CoveSliderVertical from '../../components/CoveSliderVerical';
-//import MasterSlider from '../../components/MasterSlider';
-//import { baseAPI } from '../../userConfig/baseAPI';
+import { useEffect, useState } from 'react';
+import CoveSliderVertical from '../../components/CoveSliderVerical';
+import MasterSlider from '../../components/MasterSlider';
+import { baseAPI } from '../../userConfig/baseAPI';
 
 
 const RGBCove = () => {
-    //const [masterValue, setMasterValue] = useState(1.000);
-    //const [duration, setDuration] = useState(3);
-    // const [channelData, setChannelData] = useState([]);
+	const [red, setRed] = useState(0.000);
+	const [grn, setGrn] = useState(0.000);
+	const [blu, setBlu] = useState(0.000);
+    const [masterValue, setMasterValue] = useState(1.000);
+    const [duration, setDuration] = useState(3);
+    const [channelData, setChannelData] = useState([]);
+
+	const [state, setState] = useState({});
+	const [channelState, setChannelState] = useState({});
 
 
-    // const sendColorData = (currentValue, isSlider) => {
-    //     const data = [];
-    //     let channelDuration = 0.01;
+    const sendColorData = (currentValue, isSlider) => {
+        const data = [];
+        let channelDuration = 0.01;
 
-    //     if (isSlider)
-    //         channelDuration = 0.01;
-    //     else
-    //         channelDuration = duration;
+        if (isSlider)
+            channelDuration = 0.01;
+        else
+            channelDuration = duration;
 
-    //     data.push({
-    //         "id": channelState.id,
-    //         "name": channelState.name,
-    //         "value": currentValue,
-    //         "slider": channelState.slider
-    //     });
-    //     data.push({ "name": "master", "value": masterValue, "duration": channelDuration });
+        data.push({
+            "id": channelState.id,
+            "name": channelState.name,
+            "value": currentValue,
+            "slider": channelState.slider
+        });
+        data.push({ "name": "master", "value": masterValue, "duration": channelDuration });
 
-    //     try {
-    //         baseAPI.post('colorChange', data)
-    //             .then((res) => {
-    //                 console.log(JSON.stringify(res.data));
-    //             });
-    //     } catch (error) {
-    //         console.log('Update color channel failed.', error);
-    //     };
-    // };
+        try {
+            baseAPI.post('colorChange', data)
+                .then((res) => {
+                    console.log(JSON.stringify(res.data));
+                });
+        } catch (error) {
+            console.log('Update color channel failed.', error);
+        };
+    };
 
     return (
         <div className="flex flex-1 flex-col w-1/2 m-6">
 
-            {/* <div className="flex flex-1 flex-col">
+            <div className="flex flex-1 flex-col">
 
                 <div className="flex h-full justify-between">
 					<CoveSliderVertical
@@ -75,7 +81,7 @@ const RGBCove = () => {
 
                 </div>
 
-            </div> */}
+            </div>
 
         </div>
     );

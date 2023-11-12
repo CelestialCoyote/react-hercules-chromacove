@@ -86,8 +86,12 @@ const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
                 {coveColor} {isOff ? "On" : "Off"}
             </button>
 
-			<label className="text-xl text-red-500 m-6">{
+			<label className="text-xl text-red-500 mt-4 mb-4">{
 				coveColor.toUpperCase()}
+			</label>
+
+			<label className="text-xl text-red-500 mb-6">
+				{level.toFixed(3)}
 			</label>
 
 			<Slider
@@ -114,10 +118,6 @@ const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
 				value={level}
 				onChange={debounce(handleSliderChange)}
 			/>
-
-			<label className="text-xl text-red-500 mt-8">
-				{level.toFixed(3)}
-			</label>
 
 		</div>
 
