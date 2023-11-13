@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-import { baseAPI } from '../../userConfig/baseAPI';
-import './CoveMasterSlider.css';
+import { baseAPI } from '../userConfig/baseAPI';
 
 
 const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMasterValue, duration }) => {
@@ -99,9 +98,11 @@ const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMa
 
         <div className="flex flex-col items-center w-full">
 
-            <label className="master-text-label">Master / Intensity</label>
+            <label className="text-red-500 text-xl text-center mt-4">
+				Master / Intensity
+			</label>
 
-            <div className="flex items-center w-full">
+            <div className="flex items-center w-full mt-4 mb-6">
                 <Slider
                     sx={{
                         color: { color },
@@ -127,7 +128,7 @@ const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMa
                     onChange={debounce(handleColorChange)}
                 />
 
-                <label className="master-text">{masterValue.toFixed(3)}</label>
+                <label className="text-red-500 text-lg text-center pl-6">{masterValue.toFixed(3)}</label>
 
             </div>
 

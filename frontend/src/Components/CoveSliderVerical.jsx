@@ -38,7 +38,8 @@ const CoveSliderVertical = ({ coveColor, color, setLevel, level }) => {
 
 		let data = {
 			"channel": coveColor,
-			"level": event.target.value
+			"level": event.target.value,
+			"duration": 0.01
 		};
 
 		try {

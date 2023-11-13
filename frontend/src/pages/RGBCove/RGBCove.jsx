@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import CoveSliderVertical from '../../components/CoveSliderVerical';
-import MasterSlider from '../../components/MasterSlider';
-import CoveMasterSlider from '../../components/CoveMasterSlider/CoveMasterSlider';
-import { baseAPI } from '../../userConfig/baseAPI';
+import CoveMasterSlider from '../../components/CoveMasterSlider';
+//import { baseAPI } from '../../userConfig/baseAPI';
 
 
 export default function RGBCove() {
@@ -11,38 +10,32 @@ export default function RGBCove() {
 	const [blu, setBlu] = useState(0.000);
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
-	const [channelData, setChannelData] = useState([]);
+
 
 	const [state, setState] = useState({});
+	const [channelData, setChannelData] = useState([]);
 	const [channelState, setChannelState] = useState({});
-
-
-	const sendColorData = (currentValue, isSlider) => {
-		const data = [];
-		let channelDuration = 0.01;
-
-		if (isSlider)
-			channelDuration = 0.01;
-		else
-			channelDuration = duration;
-
-		data.push({
-			"id": channelState.id,
-			"name": channelState.name,
-			"value": currentValue,
-			"slider": channelState.slider
-		});
-		data.push({ "name": "master", "value": masterValue, "duration": channelDuration });
-
-		try {
-			baseAPI.post('colorChange', data)
-				.then((res) => {
-					console.log(JSON.stringify(res.data));
-				});
-		} catch (error) {
-			console.log('Update color channel failed.', error);
-		};
-	};
+	const [rgbChannels, setRGBChannels] = useState(
+		[
+			{
+				"id": 1,
+				"name": "red",
+				"value": 0.000,
+				"slider": true
+			},
+			{
+				"id": 2,
+				"name": "grn",
+				"value": 0.000,
+				"slider": true
+			},
+			{
+				"id": 3,
+				"name": "blu",
+				"value": 0.000,
+				"slider": true
+			},
+		]);
 
 	return (
 		<div className="flex flex-1 flex-col w-1/2 m-6">
@@ -72,20 +65,12 @@ export default function RGBCove() {
 
 				<div className="flex flex-col mt-4">
 
-					{/* <MasterSlider
-                        channelData={channelData}
-                        channelState={state}
-                        setMasterValue={setMasterValue}
-                        masterValue={masterValue}
-                        duration={duration}
-                    /> */}
-
 					<CoveMasterSlider
-						color="#888833"
+						color="#886622"
 						channelState={state}
 						setMasterValue={setMasterValue}
-                        masterValue={masterValue}
-                        duration={duration}
+						masterValue={masterValue}
+						duration={duration}
 					/>
 
 				</div>
