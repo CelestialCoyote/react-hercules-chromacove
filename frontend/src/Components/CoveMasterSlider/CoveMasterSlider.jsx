@@ -92,13 +92,16 @@ const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMa
         sendColorData(data);
     };
 
+	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-32 hover:border-red-300 hover:text-red-300";
+	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-32 hover:bg-red-300 hover:border-red-300";
+
     return (
 
-        <div className="master-slider-group">
+        <div className="flex flex-col items-center w-full">
 
             <label className="master-text-label">Master / Intensity</label>
 
-            <div className="master-slider-and-value">
+            <div className="flex items-center w-full">
                 <Slider
                     sx={{
                         color: { color },
@@ -129,7 +132,7 @@ const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMa
             </div>
 
             <button
-                className={isOff ? "master-button" : "master-button-on"}
+                className={isOff ? toggleButton : toggleButtonOn}
                 onClick={handleToggleButton}
             >
                 Master {isOff ? "Off" : "On"}
