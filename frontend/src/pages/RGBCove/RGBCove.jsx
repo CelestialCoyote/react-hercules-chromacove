@@ -1,27 +1,28 @@
 //import { useEffect, useState } from 'react';
 import { useState } from 'react';
 import CoveSliderVertical from '../../components/CoveSliderVerical';
+import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
 
 const rgbChannels = [
 	{
-		"id": 1,
+		"id": 0,
 		"name": "red",
 		"color": "#bb0000",
 		"value": 0.000,
 		"slider": true
 	},
 	{
-		"id": 2,
+		"id": 1,
 		"name": "grn",
 		"color": "#00bb00",
 		"value": 0.000,
 		"slider": true
 	},
 	{
-		"id": 3,
+		"id": 2,
 		"name": "blu",
 		"color": "#0077bb",
 		"value": 0.000,
@@ -42,7 +43,8 @@ export default function RGBCove() {
 
 				<div className="flex h-full justify-between">
 					{rgbChannels.map(channel =>
-						<CoveSliderVertical
+						// <CoveSliderVertical
+						<VCoveSlider
 							key={channel.id}
 							coveColor={channel.name}
 							color={channel.color}
@@ -52,18 +54,6 @@ export default function RGBCove() {
 							duration={duration}
 						/>
 					)}
-					{/* <CoveSliderVertical
-						coveColor="Grn"
-						color="#00bb00"
-						setLevel={setGrn}
-						level={grn}
-					/>
-					<CoveSliderVertical
-						coveColor="Blu"
-						color="#0077bb"
-						setLevel={setBlu}
-						level={blu}
-					/> */}
 				</div>
 
 				<div className="flex flex-col mt-4">

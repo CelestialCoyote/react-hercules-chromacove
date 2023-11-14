@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Slider from '@mui/material/Slider';
-import { baseAPI } from '../../userConfig/baseAPI';
+import { baseAPI } from '../userConfig/baseAPI';
 
 
-const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
+const VCoveSlider = ({ color, channelState, setState, masterValue, duration }) => {
 
     const [temp, setTemp] = useState(0.000);
 
@@ -110,7 +110,7 @@ const VCoveSlider = ({ channelState, setState, masterValue, duration }) => {
 
             <Slider
                 sx={{
-                    color: "red",
+                    color: {color},
                     height: "100%",
                     '& .MuiSlider-thumb': {
                         borderRadius: '0.25rem',
