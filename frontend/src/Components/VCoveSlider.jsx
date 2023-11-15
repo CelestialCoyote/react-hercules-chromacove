@@ -88,8 +88,8 @@ const VCoveSlider = ({ color, channelState, setState, masterValue, duration }) =
         sendColorData(newLevel);
     };
 
-	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";
-	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
+	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-md rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";
+	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
 
     return (
 
@@ -99,7 +99,7 @@ const VCoveSlider = ({ color, channelState, setState, masterValue, duration }) =
                 className={ channelState.value > 0 ? `${toggleButtonOn}` : `${toggleButton}` }
                 onClick={handleToggleButton}
             >
-                {channelState.name.toUpperCase()}<br />{channelState.value > 0 ? "On" : "Off"}
+                {channelState.name.toUpperCase()} {channelState.value > 0 ? "On" : "Off"}
             </button>
 
             <label className="text-center text-red-500 text-xl py-2 px-2 m-4">{

@@ -1,6 +1,5 @@
 //import { useEffect, useState } from 'react';
 import { useState } from 'react';
-import CoveSliderVertical from '../../components/CoveSliderVerical';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
 //import { baseAPI } from '../../userConfig/baseAPI';
@@ -43,7 +42,6 @@ export default function RGBCove() {
 
 				<div className="flex h-full justify-between">
 					{rgbChannels.map(channel =>
-						// <CoveSliderVertical
 						<VCoveSlider
 							key={channel.id}
 							coveColor={channel.name}
