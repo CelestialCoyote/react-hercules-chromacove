@@ -30,7 +30,7 @@ const rgbChannels = [
 ];
 
 export default function RGBCove() {
-	const [state, setState] = useState(rgbChannels);
+	const [rgbState, setRGBState] = useState(rgbChannels);
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 
@@ -46,8 +46,9 @@ export default function RGBCove() {
 							key={channel.id}
 							coveColor={channel.name}
 							color={channel.color}
-							channelState={state[channel.id]}
-							setState={setState}
+							channelState={rgbState[channel.id]}
+							rgbChannels={rgbState}
+							setRGBState={setRGBState}
 							masterValue={masterValue}
 							duration={duration}
 						/>
@@ -58,7 +59,7 @@ export default function RGBCove() {
 
 					<CoveMasterSlider
 						color="#886622"
-						channelState={state}
+						rgbChannels={rgbState}
 						setMasterValue={setMasterValue}
 						masterValue={masterValue}
 						duration={duration}
