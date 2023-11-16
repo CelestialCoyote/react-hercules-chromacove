@@ -46,23 +46,23 @@ const VCoveSlider = ({ color, channelState, rgbChannels, setRGBState, masterValu
 			channelDuration = duration;
 
 		if (channelState.id === 0) {
-			redVal = currentValue * masterValue.toFixed(3);
-			grnVal = rgbChannels[1].value * masterValue.toFixed(3);
-			bluVal = rgbChannels[2].value * masterValue.toFixed(3);
+			redVal = (currentValue * masterValue).toFixed(3);
+			grnVal = (rgbChannels[1].value * masterValue).toFixed(3);
+			bluVal = (rgbChannels[2].value * masterValue).toFixed(3);
 		} else if (channelState.id === 1) {
-			redVal = rgbChannels[0].value * masterValue.toFixed(3);
-			grnVal = currentValue * masterValue.toFixed(3);
-			bluVal = rgbChannels[2].value * masterValue.toFixed(3);
+			redVal = (rgbChannels[0].value * masterValue).toFixed(3);
+			grnVal = (currentValue * masterValue).toFixed(3);
+			bluVal = (rgbChannels[2].value * masterValue).toFixed(3);
 		} else if (channelState.id === 2) {
-			redVal = rgbChannels[0].value * masterValue.toFixed(3);
-			grnVal = rgbChannels[1].value * masterValue.toFixed(3);
-			bluVal = currentValue * masterValue.toFixed(3);
+			redVal = (rgbChannels[0].value * masterValue).toFixed(3);
+			grnVal = (rgbChannels[1].value * masterValue).toFixed(3);
+			bluVal = (currentValue * masterValue).toFixed(3);
 		}
 
 		data.push({
-			"red": redVal.toFixed(3),
-			"grn": grnVal.toFixed(3),
-			"blu": bluVal.toFixed(3),
+			"red": redVal,
+			"grn": grnVal,
+			"blu": bluVal,
 			"duration": channelDuration
 		});
 

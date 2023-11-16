@@ -30,9 +30,6 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 
 	const sendColorData = (isSlider) => {
 		const data = [];
-		let redVal = 0;
-		let grnVal = 0;
-		let bluVal = 0;
 		let channelDuration = 0.01;
 
 		if (isSlider)
@@ -40,14 +37,10 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 		else
 			channelDuration = duration;
 
-		redVal = rgbChannels[0].value * masterValue.toFixed(3);
-		grnVal = rgbChannels[1].value * masterValue.toFixed(3);
-		bluVal = rgbChannels[2].value * masterValue.toFixed(3);
-
 		data.push({
-			"red": redVal.toFixed(3),
-			"grn": grnVal.toFixed(3),
-			"blu": bluVal.toFixed(3),
+			"red": (rgbChannels[0].value * masterValue).toFixed(3),
+			"grn": (rgbChannels[1].value * masterValue).toFixed(3),
+			"blu": (rgbChannels[2].value * masterValue).toFixed(3),
 			"duration": channelDuration
 		});
 
@@ -61,7 +54,7 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 		};
 	};
 
-	const handleToggleButton = (event) => {
+	const handleToggleButton = () => {
 		let newLevel;
 		if (masterValue > 0.000) {
 			setTemp(masterValue);
@@ -80,13 +73,13 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 			setIsOff(false);
 		}
 
-		let data = {
+		let master = {
 			"name": "master",
 			"value": newLevel,
 			"duration": duration
 		};
 
-		sendColorData(data);
+		sendColorData(master);
 	};
 
 	const handleColorChange = (event) => {
