@@ -82,13 +82,7 @@ const MasterSlider = ({ color, channelData, channelState, masterValue, setMaster
             setIsOff(true);
         }
 
-        let data = {
-            "name": "master",
-            "value": event.target.value,
-            "duration": 0
-        };
-
-        sendColorData(data);
+        sendColorData(true);
     };
 
 	const masterButtonBase = "border-red-500 border-2 text-xl rounded-xl w-32";

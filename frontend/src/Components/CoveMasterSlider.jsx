@@ -3,145 +3,154 @@ import Slider from '@mui/material/Slider';
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-const CoveMasterSlider = ({ color, channelData, channelState, masterValue, setMasterValue, duration }) => {
+const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, duration }) => {
 
-    const [isOff, setIsOff] = useState(false);
-    const [temp, setTemp] = useState(1.000);
+	const [isOff, setIsOff] = useState(false);
+	const [temp, setTemp] = useState(1.000);
 
-    const debounce = (func, wait, immediate) => {
-        let timeout;
+	const debounce = (func, wait, immediate) => {
+		let timeout;
 
-        return function () {
-            let context = this;
-            let args = arguments;
+		return function () {
+			let context = this;
+			let args = arguments;
 
-            let later = function () {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
+			let later = function () {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
 
-            let callNow = immediate && !timeout;
+			let callNow = immediate && !timeout;
 
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    };
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	};
 
-    const sendColorData = (data) => {
-        const allColorData =[]
-        Object.values(channelState).forEach(channel => {
-            allColorData.push(channel);
-        });
-        allColorData.push(data);
-        //console.log(`master allData: ${JSON.stringify(allColorData)}`);
+	const sendColorData = (isSlider) => {
+		const data = [];
+		let redVal = 0;
+		let grnVal = 0;
+		let bluVal = 0;
+		let channelDuration = 0.01;
 
-        try {
-            baseAPI.post('masterChange', allColorData)
-                .then((res) => {
-                    console.log(res.data);
-                });
-        } catch (error) {
-            console.log('Update color channel failed.', error);
-        };
-    };
+		if (isSlider)
+			channelDuration = 0.01;
+		else
+			channelDuration = duration;
 
-    const handleToggleButton = (event) => {
-        let newLevel;
-        if (masterValue > 0.000) {
-            setTemp(masterValue);
-            setMasterValue(0.000);
-            setIsOff(true);
-            newLevel = 0.000;
-        } else {
-            if (temp === 0.000) {
-                setTemp(1.000);
-                setMasterValue(1.000);
-                newLevel = 1.000;
-            } else {
-                setMasterValue(temp);
-                newLevel = temp;
-            }
-            setIsOff(false);
-        }
+		redVal = rgbChannels[0].value * masterValue.toFixed(3);
+		grnVal = rgbChannels[1].value * masterValue.toFixed(3);
+		bluVal = rgbChannels[2].value * masterValue.toFixed(3);
 
-        let data = {
-            "name": "master",
-            "value": newLevel,
-            "duration": duration
-        };
+		data.push({
+			"red": redVal.toFixed(3),
+			"grn": grnVal.toFixed(3),
+			"blu": bluVal.toFixed(3),
+			"duration": channelDuration
+		});
 
-        sendColorData(data);
-    };
+		try {
+			baseAPI.post('colorChange', data)
+				.then((res) => {
+					console.log(JSON.stringify(res.data));
+				});
+		} catch (error) {
+			console.log('Update color channel failed.', error);
+		};
+	};
 
-    const handleColorChange = (event) => {
-        setMasterValue(event.target.value);
-        if (event.target.value > 0.000) setIsOff(false);
-        if (event.target.value === 0.000) {
-            setTemp(0);
-            setIsOff(true);
-        }
+	const handleToggleButton = (event) => {
+		let newLevel;
+		if (masterValue > 0.000) {
+			setTemp(masterValue);
+			setMasterValue(0.000);
+			setIsOff(true);
+			newLevel = 0.000;
+		} else {
+			if (temp === 0.000) {
+				setTemp(1.000);
+				setMasterValue(1.000);
+				newLevel = 1.000;
+			} else {
+				setMasterValue(temp);
+				newLevel = temp;
+			}
+			setIsOff(false);
+		}
 
-        let data = {
-            "name": "master",
-            "value": event.target.value,
-            "duration": 0
-        };
+		let data = {
+			"name": "master",
+			"value": newLevel,
+			"duration": duration
+		};
 
-        sendColorData(data);
-    };
+		sendColorData(data);
+	};
+
+	const handleColorChange = (event) => {
+		setMasterValue(event.target.value);
+		if (event.target.value > 0.000) setIsOff(false);
+		if (event.target.value === 0.000) {
+			setTemp(0);
+			setIsOff(true);
+		}
+
+		sendColorData(true);
+	};
 
 	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-32 hover:border-red-300 hover:text-red-300";
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-32 hover:bg-red-300 hover:border-red-300";
 
-    return (
+	return (
 
-        <div className="flex flex-col items-center w-full">
+		<div className="flex flex-col items-center w-full">
 
-            <label className="text-red-500 text-xl text-center mt-4">
+			<label className="text-red-500 text-xl text-center mt-4">
 				Master / Intensity
 			</label>
 
-            <div className="flex items-center w-full mt-4 mb-6">
-                <Slider
-                    sx={{
-                        color: { color },
-                        width: "100%",
-                        '& .MuiSlider-thumb': {
-                            borderRadius: '0.25rem',
-                            height: "3.0rem",
-                            width: "1.5rem"
-                        },
-                        '& .MuiSlider-rail': {
-                            borderRadius: '0.25rem',
-                            height: "1.0rem"
-                        },
-                        '& .MuiSlider-track': {
-                            height: "0.5rem"
-                        }
-                    }}
-                    defaultValue={0.000}
-                    min={0.000}
-                    max={1.000}
-                    step={0.001}
-                    value={masterValue}
-                    onChange={debounce(handleColorChange)}
-                />
+			<div className="flex items-center w-full mt-4 mb-6">
+				<Slider
+					sx={{
+						color: { color },
+						width: "100%",
+						'& .MuiSlider-thumb': {
+							borderRadius: '0.25rem',
+							height: "3.0rem",
+							width: "1.5rem"
+						},
+						'& .MuiSlider-rail': {
+							borderRadius: '0.25rem',
+							height: "1.0rem"
+						},
+						'& .MuiSlider-track': {
+							height: "0.5rem"
+						}
+					}}
+					defaultValue={0.000}
+					min={0.000}
+					max={1.000}
+					step={0.001}
+					value={masterValue}
+					onChange={debounce(handleColorChange)}
+				/>
 
-                <label className="text-red-500 text-lg text-center pl-6">{masterValue.toFixed(3)}</label>
+				<label className="text-red-500 text-lg text-center pl-6">{masterValue.toFixed(3)}</label>
 
-            </div>
+			</div>
 
-            <button
-                className={isOff ? toggleButton : toggleButtonOn}
-                onClick={handleToggleButton}
-            >
-                Master {isOff ? "Off" : "On"}
-            </button>
+			<button
+				className={isOff ? toggleButton : toggleButtonOn}
+				onClick={handleToggleButton}
+			>
+				Master {isOff ? "Off" : "On"}
+			</button>
 
-        </div>
+		</div>
 
-    );
+	);
 }
 
 

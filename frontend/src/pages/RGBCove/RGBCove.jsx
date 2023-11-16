@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
+//import MasterSlider from '../../components/MasterSlider';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
 
