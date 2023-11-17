@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
-//import MasterSlider from '../../components/MasterSlider';
+import CovePresetButtons from '../../components/CovePresetButtons/CovePresetButtons';
+import Presets from '../../userConfig/presets.json';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
 
@@ -34,12 +35,13 @@ export default function RGBCove() {
 	const [rgbState, setRGBState] = useState(rgbChannels);
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
+	const [presets, setPresets] = useState(Presets);
 
 
 	return (
-		<div className="flex flex-1 flex-col w-1/2 m-6">
+		<div className="flex h-screen">
 
-			<div className="flex flex-1 flex-col">
+			<div className="flex flex-col w-1/2">
 
 				<div className="flex h-full justify-between">
 					{rgbChannels.map(channel =>
@@ -68,6 +70,15 @@ export default function RGBCove() {
 
 				</div>
 
+			</div>
+
+			<div className="w-1/2">
+				<CovePresetButtons
+					presets={presets}
+					// channelState={state}
+					// setState={setState}
+					setMasterValue={setMasterValue}
+				/>
 			</div>
 
 		</div>
