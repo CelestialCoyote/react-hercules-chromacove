@@ -28,7 +28,7 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 		};
 	};
 
-	const sendColorData = (isSlider) => {
+	const sendColorData = (currentValue, isSlider) => {
 		const data = [];
 		let channelDuration = 0.01;
 
@@ -38,9 +38,9 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 			channelDuration = duration;
 
 		data.push({
-			"red": (rgbChannels[0].value * masterValue).toFixed(3),
-			"grn": (rgbChannels[1].value * masterValue).toFixed(3),
-			"blu": (rgbChannels[2].value * masterValue).toFixed(3),
+			"red": (rgbChannels[0].value * currentValue).toFixed(3),
+			"grn": (rgbChannels[1].value * currentValue).toFixed(3),
+			"blu": (rgbChannels[2].value * currentValue).toFixed(3),
 			"duration": channelDuration
 		});
 
@@ -54,12 +54,23 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 		};
 	};
 
+	const handleColorChange = (event) => {
+		setMasterValue(event.target.value);
+
+		if (event.target.value > 0.000) setIsOff(false);
+		if (event.target.value === 0.000) {
+			setTemp(0);
+			setIsOff(true);
+		}
+
+		sendColorData(event.target.value, true);
+	};
+
 	const handleToggleButton = () => {
 		let newLevel;
 		if (masterValue > 0.000) {
 			setTemp(masterValue);
 			setMasterValue(0.000);
-			setIsOff(true);
 			newLevel = 0.000;
 		} else {
 			if (temp === 0.000) {
@@ -70,27 +81,9 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 				setMasterValue(temp);
 				newLevel = temp;
 			}
-			setIsOff(false);
 		}
 
-		let master = {
-			"name": "master",
-			"value": newLevel,
-			"duration": duration
-		};
-
-		sendColorData(master);
-	};
-
-	const handleColorChange = (event) => {
-		setMasterValue(event.target.value);
-		if (event.target.value > 0.000) setIsOff(false);
-		if (event.target.value === 0.000) {
-			setTemp(0);
-			setIsOff(true);
-		}
-
-		sendColorData(true);
+		sendColorData(newLevel);
 	};
 
 	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-xl rounded-xl p-1 w-32 hover:border-red-300 hover:text-red-300";
@@ -130,7 +123,9 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 					onChange={debounce(handleColorChange)}
 				/>
 
-				<label className="text-red-500 text-lg text-center pl-6">{masterValue.toFixed(3)}</label>
+				<label className="text-red-500 text-lg text-center pl-6">
+					{masterValue.toFixed(3)}
+				</label>
 
 			</div>
 
