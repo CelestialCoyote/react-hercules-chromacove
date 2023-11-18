@@ -28,7 +28,7 @@ const Nav = () => {
 				bg-slate-400
 			"
 		>
-            <label>Name<br></br>Planetarium</label>
+            <h1>Name<br></br>Planetarium</h1>
             <div
 				className="flex justify-between w-3/4"
 			>
