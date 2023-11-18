@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
-import CovePresetButtons from '../../components/CovePresetButtons/CovePresetButtons';
+import CovePresetButtons from '../../components/CovePresetButtons';
 import Presets from '../../userConfig/presets.json';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
@@ -75,8 +75,8 @@ export default function RGBCove() {
 			<div className="w-1/2">
 				<CovePresetButtons
 					presets={presets}
-					// channelState={state}
-					// setState={setState}
+					rgbState={rgbState}
+					setRGBState={setRGBState}
 					setMasterValue={setMasterValue}
 				/>
 			</div>
