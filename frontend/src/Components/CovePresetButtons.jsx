@@ -80,7 +80,7 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 
 		<div className="flex flex-col text-red-500">
 
-			<label className="text-center m-6">Cove Level Presets</label>
+			<h1 className="text-center m-6">Cove Level Presets</h1>
 
 			<div className="grid grid-cols-4 place-items-center gap-6 mb-6">
 				{presets.map(preset =>

@@ -1,26 +1,23 @@
 [
     {
-        "id": 1,
-        "name": "red",
-        "value": 0.000,
-        "slider": true
-    },
-    {
-        "id": 2,
-        "name": "grn",
-        "value": 0.000,
-        "slider": true
-    },
-    {
-        "id": 3,
-        "name": "blu",
-        "value": 0.000,
-        "slider": true
-    },
-    {
-        "id": 4,
-        "name": "wht",
-        "value": 0.000,
-        "slider": true
-    }
+		"id": 0,
+		"name": "red",
+		"color": "#bb0000",
+		"value": 0.000,
+		"slider": true
+	},
+	{
+		"id": 1,
+		"name": "grn",
+		"color": "#00bb00",
+		"value": 0.000,
+		"slider": true
+	},
+	{
+		"id": 2,
+		"name": "blu",
+		"color": "#0077bb",
+		"value": 0.000,
+		"slider": true
+	}
 ]

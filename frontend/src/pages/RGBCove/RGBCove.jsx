@@ -3,33 +3,10 @@ import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
 import CovePresetButtons from '../../components/CovePresetButtons';
+import rgbChannels from '../../userConfig/channels.json'
 import Presets from '../../userConfig/presets.json';
 //import { baseAPI } from '../../userConfig/baseAPI';
 
-
-const rgbChannels = [
-	{
-		"id": 0,
-		"name": "red",
-		"color": "#bb0000",
-		"value": 0.000,
-		"slider": true
-	},
-	{
-		"id": 1,
-		"name": "grn",
-		"color": "#00bb00",
-		"value": 0.000,
-		"slider": true
-	},
-	{
-		"id": 2,
-		"name": "blu",
-		"color": "#0077bb",
-		"value": 0.000,
-		"slider": true
-	},
-];
 
 export default function RGBCove() {
 	const [rgbState, setRGBState] = useState(rgbChannels);
@@ -39,7 +16,7 @@ export default function RGBCove() {
 
 
 	return (
-		<div className="flex h-screen">
+		<div className="flex h-screen p-4">
 
 			<div className="flex flex-col w-1/2">
 

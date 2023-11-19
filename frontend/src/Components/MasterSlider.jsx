@@ -92,11 +92,11 @@ const MasterSlider = ({ color, channelData, channelState, masterValue, setMaster
     return (
         <div className="flex flex-col items-center w-full">
 
-            <label
+            <h1
 				className="text-red-500 text-center text-2xl mt-2 mb-2"
 			>
 				Master / Intensity
-			</label>
+			</h1>
 
             <div className="flex items-center p-2 w-full">
                 <Slider
@@ -124,11 +124,11 @@ const MasterSlider = ({ color, channelData, channelState, masterValue, setMaster
                     onChange={debounce(handleColorChange)}
                 />
 
-                <label
+                <h1
 					className="text-red-500 text-center text-2xl ml-6"
 				>
 					{masterValue.toFixed(3)}
-				</label>
+				</h1>
 
             </div>
 

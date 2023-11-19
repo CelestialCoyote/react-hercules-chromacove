@@ -118,11 +118,13 @@ const VCoveSlider = ({ color, channelState, rgbChannels, setRGBState, masterValu
 				{channelState.name.toUpperCase()} {channelState.value > 0 ? "On" : "Off"}
 			</button>
 
-			<label className="text-center text-red-500 text-xl py-2 px-2 m-4">{
-				channelState.name.toUpperCase()}
+			<h1
+				className="text-center text-red-500 text-xl py-2 px-2 m-4"
+			>
+				{channelState.name.toUpperCase()}
 				<br />
 				{channelState.value.toFixed(3)}
-			</label>
+			</h1>
 
 			<Slider
 				sx={{
