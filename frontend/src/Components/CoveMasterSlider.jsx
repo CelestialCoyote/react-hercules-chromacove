@@ -93,9 +93,9 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 
 		<div className="flex flex-col items-center w-full">
 
-			<label className="text-red-500 text-xl text-center mt-4">
+			<h3 className="text-red-500 text-xl text-center mt-4">
 				Master / Intensity
-			</label>
+			</h3>
 
 			<div className="flex items-center w-full mt-4 mb-6">
 				<Slider
@@ -123,9 +123,9 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 					onChange={debounce(handleColorChange)}
 				/>
 
-				<label className="text-red-500 text-lg text-center pl-6">
+				<h3 className="text-red-500 text-lg text-center pl-6">
 					{masterValue.toFixed(3)}
-				</label>
+				</h3>
 
 			</div>
 
