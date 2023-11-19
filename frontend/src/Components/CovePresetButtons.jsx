@@ -25,37 +25,15 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 	};
 	
 	const sendPresetData = (preset) => {
-		// Copy channelState to array of objects.
 		const data = [];
-		const allChannels = [];
-		Object.values(rgbState).forEach(channel => {
-			//console.log(channel)
-			allChannels.push(channel);
-		});
+		console.log(`rgbState Red: ${rgbState[0].value}`);
+		console.log(`preset Red: ${preset.red}`);
 
-		// Reset value key to 0 before inputing Preset data.
-		// Otherwise previous values could be in channels not used by current preset.
-		allChannels.forEach(channel => channel.value = 0);
-
-		// Create object to hold channels and values used by preset.
-		//const presetChannels = presets[preset].channels;
-		const presetChannels = preset.channels;
-		//console.log(presetChannels);
-
-		// For every color in Preset adjust the color value in allChannels.
-		Object.keys(presetChannels).forEach(preset => {
-			allChannels.forEach(channel => {
-				if (channel.name === preset.toLowerCase())
-					channel.value = presetChannels[preset];
-			});
-		});
-
-		// Update the sliders to match Preset selected.
-		allChannels.forEach(channel => {
-			setRGBState(prevState => (
-				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: parseFloat(channel.value) } }
-			));
-		});
+		// setRGBState(prevState => (
+		// 	{ 
+		// 		...prevState, [rgbState[0].value]:  { ...prevState[rgbState[0].value], value: parseFloat(preset.red) }
+		// 	}
+		// ));
 
 		data.push({
 			"red": (preset.red).toFixed(3),
