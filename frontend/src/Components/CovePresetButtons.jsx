@@ -1,44 +1,36 @@
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, setIsEditOpen}) => {
-		
-	const sendPresetData2 = (preset) => {
-		const data = [];
-		console.log(preset)
+const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, setIsEditOpen }) => {
 
-		data.push({
-			"red": (preset.red).toFixed(3),
-			"grn": (preset.grn).toFixed(3),
-			"blu": (preset.blu).toFixed(3),
-			"duration": preset.duration
+	const sendPresetData = (preset) => {
+		const allChannels = [];
+		const presetChannels = preset.channels;
+		const data = [];
+
+		Object.values(rgbState).forEach(channel => {
+			allChannels.push(channel);
 		});
 
-		try {
-			baseAPI.post('colorChange', data)
-				.then((res) => {
-					console.log(JSON.stringify(res.data));
-				});
-		} catch (error) {
-			console.log('Update color channel failed.', error);
-		};
-	};
-	
-	const sendPresetData = (preset) => {
-		const data = [];
-		console.log(`rgbState Red: ${rgbState[0].value}`);
-		console.log(`preset Red: ${preset.red}`);
+		allChannels.forEach(channel => channel.value = 0);
 
-		// setRGBState(prevState => (
-		// 	{ 
-		// 		...prevState, [rgbState[0].value]:  { ...prevState[rgbState[0].value], value: parseFloat(preset.red) }
-		// 	}
-		// ));
+		Object.keys(presetChannels).forEach(preset => {
+			allChannels.forEach(channel => {
+				if (channel.name === preset.toLowerCase())
+					channel.value = presetChannels[preset];
+			});
+		});
+
+		allChannels.forEach(channel => {
+			setRGBState(prevState => (
+				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: parseFloat(channel.value) } }
+			));
+		});
 
 		data.push({
-			"red": (preset.red).toFixed(3),
-			"grn": (preset.grn).toFixed(3),
-			"blu": (preset.blu).toFixed(3),
+			"red": (preset.channels.red).toFixed(3),
+			"grn": (preset.channels.grn).toFixed(3),
+			"blu": (preset.channels.blu).toFixed(3),
 			"duration": preset.duration
 		});
 
@@ -63,11 +55,7 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 					<button
 						key={preset.preset}
 						className="border-red-500 border-2 rounded-xl w-24 p-1"
-						onClick={() => {
-							//console.log(`preset selected: ${JSON.stringify(preset)}`)
-							//updateChannelState(preset)
-							sendPresetData(preset)
-						}}
+						onClick={() => { sendPresetData(preset) }}
 					>
 						{preset.label}
 					</button>

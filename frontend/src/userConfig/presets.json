@@ -1,146 +1,178 @@
 [
-    {
-        "preset": 1,
-        "label": "50%",
-        "red": 0.500,
-        "grn": 0.500,
-        "blu": 0.500,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 2,
-        "label": "Dawn",
-        "red": 0.750,
-        "grn": 0.500,
-        "blu": 0.000,
-        "duration": 5,
-        "master": 1.000
-    },
-    {
-        "preset": 3,
-        "label": "Twilight",
-        "red": 0.000,
-        "grn": 1.000,
-        "blu": 0.750,
-        "duration": 4,
-        "master": 1.000
-    },
-    {
-        "preset": 4,
-        "label": "Light Pol",
-        "red": 0.333,
-        "grn": 0.333,
-        "blu": 0.333,
-        "duration": 7,
-        "master": 1.000
-    },
-    {
-        "preset": 5,
-        "label": "preset 05",
-        "red": 0.000,
-        "grn": 0.500,
-        "blu": 0.000,
-        "duration": 8,
-        "master": 1.000
-    },
-    {
-        "preset": 6,
-        "label": "preset 06",
-        "red": 0.500,
-        "grn": 0.000,
-        "blu": 0.000,
-        "duration": 9,
-        "master": 1.000
-    },
-    {
-        "preset": 7,
-        "label": "Light grn",
-        "red": 0.100,
-        "grn": 0.600,
-        "blu": 0.100,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 8,
-        "label": "preset 08",
-        "red": 0.000,
-        "grn": 0.000,
-        "blu": 0.000,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 9,
-        "label": "preset 09",
-        "red": 0.250,
-        "grn": 0.7500,
-        "blu": 0.000,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 10,
-        "label": "preset 10",
-        "red": 0.500,
-        "grn": 0.000,
-        "blu": 0.500,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 11,
-        "label": "preset 11",
-        "red": 0.000,
-        "grn": 0.500,
-        "blu": 0.500,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 12,
-        "label": "preset 12",
-        "red": 0.250,
-        "grn": 1.000,
-        "blu": 0.500,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 13,
-        "label": "Aqua",
-        "red": 0.000,
-        "grn": 1.000,
-        "blu": 1.000,
-        "duration": 4,
-        "master": 1.000
-    },
-    {
-        "preset": 14,
-        "label": "Orange",
-        "red": 1.000,
-        "grn": 0.500,
-        "blu": 0.000,
-        "duration": 3,
-        "master": 1.000
-    },
-    {
-        "preset": 15,
-        "label": "yellow",
-        "red": 0.750,
-        "grn": 1.000,
-        "blu": 0.000,
-        "duration": 4,
-        "master": 1.000
-    },
-    {
-        "preset": 16,
-        "label": "Magenta",
-        "red": 1.000,
-        "grn": 0.000,
-        "blu": 1.000,
-        "duration": 4,
-        "master": 1.000
-    }
+	{
+		"preset": 1,
+		"label": "50%",
+		"channels": {
+			"red": 0.500,
+			"grn": 0.500,
+			"blu": 0.500
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 2,
+		"label": "Dawn",
+		"channels": {
+			"red": 0.750,
+			"grn": 0.500,
+			"blu": 0.000
+		},
+		"duration": 5,
+		"master": 1.000
+	},
+	{
+		"preset": 3,
+		"label": "Twilight",
+		"channels": {
+			"red": 0.000,
+			"grn": 1.000,
+			"blu": 0.750
+		},
+		"duration": 4,
+		"master": 1.000
+	},
+	{
+		"preset": 4,
+		"label": "Light Pol",
+		"channels": {
+			"red": 0.333,
+			"grn": 0.333,
+			"blu": 0.333
+		},
+		"duration": 7,
+		"master": 1.000
+	},
+	{
+		"preset": 5,
+		"label": "preset 05",
+		"channels": {
+			"red": 0.000,
+			"grn": 0.500,
+			"blu": 0.000
+		},
+		"duration": 8,
+		"master": 1.000
+	},
+	{
+		"preset": 6,
+		"label": "preset 06",
+		"channels": {
+			"red": 0.500,
+			"grn": 0.000,
+			"blu": 0.000
+		},
+		"duration": 9,
+		"master": 1.000
+	},
+	{
+		"preset": 7,
+		"label": "Light grn",
+		"channels": {
+			"red": 0.100,
+			"grn": 0.600,
+			"blu": 0.100
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 8,
+		"label": "preset 08",
+		"channels": {
+			"red": 0.000,
+			"grn": 0.000,
+			"blu": 0.000
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 9,
+		"label": "preset 09",
+		"channels": {
+			"red": 0.250,
+			"grn": 0.7500,
+			"blu": 0.000
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 10,
+		"label": "preset 10",
+		"channels": {
+			"red": 0.500,
+			"grn": 0.000,
+			"blu": 0.500
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 11,
+		"label": "preset 11",
+		"channels": {
+			"red": 0.000,
+			"grn": 0.500,
+			"blu": 0.500
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 12,
+		"label": "preset 12",
+		"channels": {
+			"red": 0.250,
+			"grn": 1.000,
+			"blu": 0.500
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 13,
+		"label": "Aqua",
+		"channels": {
+			"red": 0.000,
+			"grn": 1.000,
+			"blu": 1.000
+		},
+		"duration": 4,
+		"master": 1.000
+	},
+	{
+		"preset": 14,
+		"label": "Orange",
+		"channels": {
+			"red": 1.000,
+			"grn": 0.500,
+			"blu": 0.000
+		},
+		"duration": 3,
+		"master": 1.000
+	},
+	{
+		"preset": 15,
+		"label": "yellow",
+		"channels": {
+			"red": 0.750,
+			"grn": 1.000,
+			"blu": 0.000
+		},
+		"duration": 4,
+		"master": 1.000
+	},
+	{
+		"preset": 16,
+		"label": "Magenta",
+		"channels": {
+			"red": 1.000,
+			"grn": 0.000,
+			"blu": 1.000
+		},
+		"duration": 4,
+		"master": 1.000
+	}
 ]
