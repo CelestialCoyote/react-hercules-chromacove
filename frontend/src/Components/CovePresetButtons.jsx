@@ -8,11 +8,10 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 		const presetChannels = preset.channels;
 		const data = [];
 
+		// Copy rgbState to array of objects.
 		Object.values(rgbState).forEach(channel => {
 			allChannels.push(channel);
 		});
-
-		allChannels.forEach(channel => channel.value = 0);
 
 		Object.keys(presetChannels).forEach(preset => {
 			allChannels.forEach(channel => {
@@ -25,12 +24,13 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 			setRGBState(prevState => (
 				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: parseFloat(channel.value) } }
 			));
+			setMasterValue(preset.master);
 		});
 
 		data.push({
-			"red": (preset.channels.red).toFixed(3),
-			"grn": (preset.channels.grn).toFixed(3),
-			"blu": (preset.channels.blu).toFixed(3),
+			"red": ((preset.channels.red) * preset.master).toFixed(3),
+			"grn": ((preset.channels.grn) * preset.master).toFixed(3),
+			"blu": ((preset.channels.blu) * preset.master).toFixed(3),
 			"duration": preset.duration
 		});
 
