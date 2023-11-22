@@ -3,7 +3,7 @@ import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
 import CovePresetButtons from '../../components/CovePresetButtons';
-import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
+import FadeRateSelect from '../../components/FadeRateSelect';
 import rgbChannels from '../../userConfig/channels.json'
 import Presets from '../../userConfig/presets.json';
 //import { baseAPI } from '../../userConfig/baseAPI';

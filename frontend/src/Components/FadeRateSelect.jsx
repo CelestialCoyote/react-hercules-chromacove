@@ -1,7 +1,4 @@
-//import './FadeRateSelect.css';
-
-
-const FadeRateSelect = ({ duration, setDuration }) => {
+export default function FadeRateSelect({ duration, setDuration }) {
 
 	const fadeRates = [2, 3, 5, 10, 30, 60];
 
@@ -37,16 +34,16 @@ const FadeRateSelect = ({ duration, setDuration }) => {
 						{duration}
 					</h3>
 
-					<label
+					<h3
 						className="cove-label-small"
 						style={{ marginLeft: "1.0rem" }}
 					>
 						seconds
-					</label>
+					</h3>
 
 				</div>
 
-				<div className="grid grid-cols-3 gap-6 text-red-500">
+				<div className="grid grid-cols-3 place-items-center gap-6 text-red-500">
 
 					{fadeRates.map((element, index) => (
 						<button
@@ -79,6 +76,3 @@ const FadeRateSelect = ({ duration, setDuration }) => {
 	)
 
 };
-
-
-export default FadeRateSelect;
