@@ -3,6 +3,7 @@ import { useState } from 'react';
 import VCoveSlider from '../../components/VCoveSlider';
 import CoveMasterSlider from '../../components/CoveMasterSlider';
 import CovePresetButtons from '../../components/CovePresetButtons';
+import FadeRateSelect from '../../components/FadeRateSelect/FadeRateSelect';
 import rgbChannels from '../../userConfig/channels.json'
 import Presets from '../../userConfig/presets.json';
 //import { baseAPI } from '../../userConfig/baseAPI';
@@ -55,6 +56,11 @@ export default function RGBCove() {
 					rgbState={rgbState}
 					setRGBState={setRGBState}
 					setMasterValue={setMasterValue}
+				/>
+
+				<FadeRateSelect
+					duration={duration}
+					setDuration={setDuration}
 				/>
 			</div>
 

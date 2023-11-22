@@ -1,5 +1,4 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
-import hercules from '../assets/hercules.png';
 
 
 const Nav = () => {
@@ -29,13 +28,7 @@ const Nav = () => {
 				bg-slate-400
 			"
 		>
-			<div className="flex gap-2">
-				<img
-					src={hercules}
-					className="ml-2 h-12 w-12"
-				/>
-				<h3>Name<br></br>Planetarium</h3>
-			</div>
+			<h3 className="pl-4">Name<br></br>Planetarium</h3>
 
 			<div
 				className="flex justify-between w-3/4 pl-2 pr-4"

@@ -1,117 +1,82 @@
-import './FadeRateSelect.css';
+//import './FadeRateSelect.css';
 
 
 const FadeRateSelect = ({ duration, setDuration }) => {
 
-    const handleRateSelect = (e) => {
-        setDuration(e.target.value);
-    }
+	const fadeRates = [2, 3, 5, 10, 30, 60];
 
-    return (
+	const handleRateSelect = (e) => {
+		setDuration(e.target.value);
+	}
 
-        <div className="fadeRateSelect">
+	return (
 
-            <label
-                className="cove-label"
-            >
-                Fade Rate Selection
-            </label>
+		<div className="border-red-500 text-red-500 border-t-4 mt-10">
 
-            <div className="rateSelection">
+			<h3
+				className="text-center mt-6"
+			>
+				Fade Rate Selection
+			</h3>
 
-                <div className="rate-select-value">
+			<div className="flex flex-col">
 
-                    <label
-                        className="cove-label-small"
-                        style={{ marginRight: "1.0rem" }}
-                    >
-                        Currnt Fade Rate (Duration):
-                    </label>
+				<div className="flex justify-center">
 
-                    <label
-                        className="cove-label-small"
-                        style={{ fontWeight: "bold" }}
-                    >
-                        {duration}
-                    </label>
+					<h3
+						className=""
+						style={{ marginRight: "1.0rem" }}
+					>
+						Currnt Fade Rate (Duration):
+					</h3>
 
-                    <label
-                        className="cove-label-small"
-                        style={{ marginLeft: "1.0rem" }}
-                    >
-                        seconds
-                    </label>
+					<h3
+						className="cove-label-small"
+						style={{ fontWeight: "bold" }}
+					>
+						{duration}
+					</h3>
 
-                </div>
+					<label
+						className="cove-label-small"
+						style={{ marginLeft: "1.0rem" }}
+					>
+						seconds
+					</label>
 
-                <div className="buttonRow">
+				</div>
 
-                    <input
-                        type="radio"
-                        name="fade"
-                        id="fade01"
-                        value="2"
-                        onChange={handleRateSelect}
-                    />
-                    <label htmlFor="fade01">2 Sec</label>
+				<div className="grid grid-cols-3 gap-6 text-red-500">
 
-                    <input
-                        type="radio"
-                        name="fade"
-                        id="fade02"
-                        value="3"
-                        onChange={handleRateSelect}
-                        defaultChecked
-                    />
-                    <label htmlFor="fade02">3 Sec</label>
+					{fadeRates.map((element, index) => (
+						<button
+							key={element}
+							type="radio"
+							id={index}
+							className="
+								appearance-none
+								text-red-500
+								text-center 
+								border-red-500
+								border-2
+								rounded-xl
+								w-24
+								p-1
+							"
+							name={element}
+							value={element}
+							onChange={setDuration(element)}
+						>
+							{element} Sec
+						</button>
+					))}
+				</div>
 
-                    <input
-                        type="radio"
-                        name="fade"
-                        id="fade03"
-                        value="5"
-                        onChange={handleRateSelect}
-                    />
-                    <label htmlFor="fade03">5 Sec</label>
+			</div>
 
-                </div>
+		</div>
 
-                <div className="buttonRow">
-
-                <input
-                        type="radio"
-                        name="fade"
-                        id="fade04"
-                        value="10"
-                        onChange={handleRateSelect}
-                    />
-                    <label htmlFor="fade04">10 Sec</label>
-
-                    <input
-                        type="radio"
-                        name="fade"
-                        id="fade05"
-                        value="30"
-                        onChange={handleRateSelect}
-                    />
-                    <label htmlFor="fade05">30 Sec</label>
-
-                    <input
-                        type="radio"
-                        name="fade"
-                        id="fade06"
-                        value="60"
-                        onChange={handleRateSelect}
-                    />
-                    <label htmlFor="fade06">60 Sec</label>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    )
+	)
 
 };
 
