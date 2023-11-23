@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, duration }) => {
+export default function SliderMaster({ color, rgbChannels, masterValue, setMasterValue, duration }) {
 
 	const [isOff, setIsOff] = useState(false);
 	const [temp, setTemp] = useState(1.000);
@@ -139,7 +139,4 @@ const CoveMasterSlider = ({ color, rgbChannels, masterValue, setMasterValue, dur
 		</div>
 
 	);
-}
-
-
-export default CoveMasterSlider;
+};

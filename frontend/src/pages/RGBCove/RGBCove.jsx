@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import VCoveSlider from '../../components/VCoveSlider';
-import CoveMasterSlider from '../../components/CoveMasterSlider';
+import SliderVertical from '../../components/SliderVertical';
+import SliderMaster from '../../components/SliderMaster';
 import CovePresetButtons from '../../components/CovePresetButtons';
 import FadeRateSelect from '../../components/FadeRateSelect';
 import rgbChannels from '../../userConfig/channels.json'
@@ -21,7 +21,7 @@ export default function RGBCove() {
 
 				<div className="flex h-full justify-between">
 					{rgbChannels.map(channel =>
-						<VCoveSlider
+						<SliderVertical
 							key={channel.id}
 							coveColor={channel.name}
 							color={channel.color}
@@ -36,7 +36,7 @@ export default function RGBCove() {
 
 				<div className="flex flex-col mt-4">
 
-					<CoveMasterSlider
+					<SliderMaster
 						color="#886622"
 						rgbChannels={rgbState}
 						setMasterValue={setMasterValue}

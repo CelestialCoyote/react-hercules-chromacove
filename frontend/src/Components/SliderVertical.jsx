@@ -3,7 +3,9 @@ import Slider from '@mui/material/Slider';
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-const VCoveSlider = ({ color, channelState, rgbChannels, setRGBState, masterValue, duration }) => {
+export default function SliderVertical(
+	{ color, channelState, rgbChannels, setRGBState, masterValue, duration }
+) {
 
 	const [temp, setTemp] = useState(0.000);
 
@@ -154,7 +156,4 @@ const VCoveSlider = ({ color, channelState, rgbChannels, setRGBState, masterValu
 		</div>
 
 	);
-}
-
-
-export default VCoveSlider;
+};

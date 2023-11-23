@@ -1,10 +1,5 @@
 export default function FadeRateSelect({ duration, setDuration }) {
-
 	const fadeRates = [2, 3, 5, 10, 30, 60];
-
-	const handleRateSelect = (e) => {
-		setDuration(e.target.value);
-	}
 
 	return (
 
@@ -30,27 +25,26 @@ export default function FadeRateSelect({ duration, setDuration }) {
 
 				<div className="grid grid-cols-3 place-items-center gap-6 text-red-500">
 
-					{fadeRates.map((element, index) => (
+					{fadeRates.map(rate => (
 						<button
-							key={element}
+							key={rate}
 							type="radio"
-							id={index}
-							className="
+							id={rate}
+							className={`
 								appearance-none
 								text-red-500
 								text-center 
 								border-red-500
 								border-2
 								rounded-xl
-								focus:bg-red-300
 								w-24
 								p-1
-							"
-							name={element}
-							value={element}
+							` + (parseInt(duration) === rate ? " bg-red-300" : "")}
+							name={rate}
+							value={rate}
 							onClick={(e) => setDuration(e.target.value)}
 						>
-							{element} Sec
+							{rate} Sec
 						</button>
 					))}
 				</div>
