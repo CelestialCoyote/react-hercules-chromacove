@@ -28,8 +28,6 @@ export default function FadeRateSelect({ duration, setDuration }) {
 					{fadeRates.map(rate => (
 						<button
 							key={rate}
-							type="radio"
-							id={rate}
 							className={`
 								appearance-none
 								text-red-500
@@ -40,7 +38,6 @@ export default function FadeRateSelect({ duration, setDuration }) {
 								w-24
 								p-1
 							` + (parseInt(duration) === rate ? " bg-red-300" : "")}
-							name={rate}
 							value={rate}
 							onClick={(e) => setDuration(e.target.value)}
 						>
