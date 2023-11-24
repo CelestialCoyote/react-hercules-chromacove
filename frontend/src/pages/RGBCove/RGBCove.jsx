@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SliderVertical from '../../components/SliderVertical';
 import SliderMaster from '../../components/SliderMaster';
+import SliderWhite from '../../components/SliderWhite';
 import CovePresetButtons from '../../components/CovePresetButtons';
 import FadeRateSelect from '../../components/FadeRateSelect';
 import rgbChannels from '../../userConfig/channels.json'
@@ -9,6 +10,7 @@ import Presets from '../../userConfig/presets.json';
 
 export default function RGBCove() {
 	const [rgbState, setRGBState] = useState(rgbChannels);
+	const [whtValue, setWhtValue] = useState(0.000);
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 	const [presets, setPresets] = useState(Presets);
@@ -32,10 +34,18 @@ export default function RGBCove() {
 							duration={duration}
 						/>
 					)}
+					
+					<SliderWhite
+						color="#999999"
+						whtValue={whtValue}
+						setWhtValue={setWhtValue}
+						setMasterValue={setMasterValue}
+						masterValue={masterValue}
+						duration={duration}
+					/>
 				</div>
 
 				<div className="flex flex-col mt-4">
-
 					<SliderMaster
 						color="#886622"
 						rgbChannels={rgbState}
@@ -43,7 +53,6 @@ export default function RGBCove() {
 						masterValue={masterValue}
 						duration={duration}
 					/>
-
 				</div>
 
 			</div>
