@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+// import { FaBars } from 'react-icons/fa';
+import { FaBars, FaX } from "react-icons/fa6";
 import logo from '../components/assets/PlanetariumLogo.png';
 
 
@@ -20,90 +22,80 @@ export default function NewNav() {
 
 
 	return (
-		<header
-			className="
-				bg-gray-500
-				text-red-500
-				w-full
-				fixed
-				top-0
-				left-0
-				z-10
-				ease-in
-				duration-300
-			"
-		>
+		// <header
+		// 	className="
+		// 		bg-gray-500
+		// 		text-red-500
+		// 		w-full
+		// 		fixed
+		// 		top-0
+		// 		left-0
+		// 		z-10
+		// 		ease-in
+		// 		duration-300
+		// 	"
+		// >
 			<nav
 				className={`
-				bg-galaxy_black-300
-				md:text-sm
-				${state ? "shadow-lg rounded-xl border-red-500 border-2 mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}
-			`}
+					bg-gray-800
+					text-red-500
+					items-center
+					flex
+					h-20
+					${state ? "mx-2 md:border-none md:mx-2 md:mt-0" : ""}
+				`}
 			>
 				<div
 					className="
-					gap-x-14
-					items-center
-					max-w-screen-xl
-					mx-auto
-					px-4
-					md:flex
-					md:px-8
-				"
+						items-center
+						gap-x-14
+						max-w-screen-xl
+						mx-auto
+						px-4
+						md:flex
+						md:px-8
+					"
 				>
-					<div className="flex items-center justify-between py-5 md:block">
+					<div className="flex items-center justify-between border-2">
 						<a href="/">
 							<img
 								src={logo}
 								width={48}
-								// height={50}
 								alt="planetarium logo"
 							/>
 						</a>
-						<div className="md:hidden">
+
+						<div className="flex items-center md:hidden w-24">
 							<button
-								className="menu-btn text-gray-500 hover:text-gray-800"
+								className="flex text-red-500 hover:text-green-500 border-2"
 								onClick={() => setState(!state)}
 							>
 								{
-									state ? (
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											className="h-6 w-6"
-											viewBox="0 0 20 20"
-											fill="currentColor"
-										>
-											<path
-												fillRule="evenodd"
-												d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-												clipRule="evenodd"
-											/>
-										</svg>
-									) : (
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth={1.5}
-											stroke="currentColor"
-											className="w-6 h-6"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-											/>
-										</svg>
-									)
+									state ? (<FaX className="h-6 w-6" />) : (<FaBars className="h-6 w-6" />)
 								}
 							</button>
 						</div>
 					</div>
+
 					<div
-						className={`flex-1 items-center mt-8 md:mt-0 md:flex ${state ? 'block' : 'hidden'} `}
+						className={`
+							flex-1 
+							items-center
+							mt-8
+							md:mt-0
+							md:flex
+							${state ? 'flex' : 'hidden'}
+						`}
 					>
 						<ul
-							className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0"
+							className="
+								justify-center
+								items-center
+								space-y-6
+								md:flex
+								md:space-x-6
+								md:space-y-0
+							"
 						>
 							{navigation.map((item, idx) => {
 								return (
@@ -184,6 +176,6 @@ export default function NewNav() {
 					</div>
 				</div>
 			</nav>
-		</header>
+		// </header>
 	);
 };
