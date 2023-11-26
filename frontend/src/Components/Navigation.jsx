@@ -36,7 +36,7 @@ export default function NewNav() {
 		// >
 			<nav
 				className={`
-				bg-gray-500
+				bg-black-500
 				md:text-sm
 				${state ? "shadow-lg rounded-xl border-red-500 border-2 mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}
 			`}
@@ -63,7 +63,10 @@ export default function NewNav() {
 						<div className="md:hidden">
 							<button
 								className="menu-btn text-gray-500 hover:text-gray-800"
-								onClick={() => setState(!state)}
+								onClick={() => {
+									setState(!state)
+									console.log(state)
+								}}
 							>
 								{
 									state ? (
@@ -81,6 +84,7 @@ export default function NewNav() {
 											/>
 										</svg>
 									) : (
+										// <FaBars className="h-6 w-6" />
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -128,44 +132,44 @@ export default function NewNav() {
 						</ul>
 						<div
 							className="
-							flex-1
-							gap-x-6
-							items-center
-							justify-end
-							mt-6
-							space-y-6
-							md:flex
-							md:space-y-0
-							md:mt-0
-						"
+								flex-1
+								gap-x-6
+								items-center
+								justify-end
+								mt-6
+								space-y-6
+								md:flex
+								md:space-y-0
+								md:mt-0
+							"
 						>
 							<a
 								href="/signup"
 								className="
-								block
-								text-cloud_white-900
-								hover:text-cloud_white-500
-							"
+									block
+									text-cloud_white-900
+									hover:text-cloud_white-500
+								"
 							>
 								Sign Up
 							</a>
 							<a
 								href="/login"
 								className="
-								flex
-								items-center
-								justify-center
-								gap-x-1
-								py-2
-								px-4 
-								text-cloud_white-900
-								font-medium 
-								bg-galaxy_black-700 
-								hover:bg-galaxy_black-500 
-								active:bg-olive-900
-								rounded-full
-								md:inline-flex
-							"
+									flex
+									items-center
+									justify-center
+									gap-x-1
+									py-2
+									px-4 
+									text-cloud_white-900
+									font-medium 
+									bg-galaxy_black-700 
+									hover:bg-galaxy_black-500 
+									active:bg-olive-900
+									rounded-full
+									md:inline-flex
+								"
 							>
 								Log In
 								<svg
