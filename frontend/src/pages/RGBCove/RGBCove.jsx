@@ -17,7 +17,7 @@ export default function RGBCove() {
 
 
 	return (
-		<div className="flex h-screen p-6 gap-10">
+		<div className="flex h-screen p-6 gap-10 mt-12">
 
 			<div className="flex flex-col w-1/2">
 
