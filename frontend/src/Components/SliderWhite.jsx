@@ -37,6 +37,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 			channelDuration = duration;
 
 		data.push({
+			"wht": currentValue,
 			"duration": channelDuration
 		});
 
@@ -52,6 +53,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 
 	const handleColorChange = (event) => {
 		// updateChannelState(channelState.id, event.target.value);
+		setWhtValue(event.target.value);
 
 		if (event.target.value === 0.000) setTemp(0);
 
@@ -63,14 +65,17 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 		if (whtValue.value > 0.000) {
 			setTemp(whtValue);
 			// updateChannelState(channelState.id, 0.000);
+			setWhtValue(0.000);
 			newLevel = 0.000;
 		} else {
 			if (temp === 0.000) {
 				setTemp(1.000);
 				// updateChannelState(channelState.id, 1.000);
+				setWhtValue(1.000);
 				newLevel = 1.000;
 			} else {
 				// updateChannelState(channelState.id, temp);
+				setWhtValue(temp);
 				newLevel = temp;
 			}
 		}
@@ -106,7 +111,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 
 			<Slider
 				sx={{
-					color: "#888888",
+					color: {color},
 					height: "100%",
 					'& .MuiSlider-thumb': {
 						borderRadius: '0.25rem',
@@ -132,7 +137,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 				value={whtValue}
 				onChange={(e) => {
 					setWhtValue(e.target.value);
-					//handleSliderChange();
+					debounce(handleColorChange);
 				}}
 			/>
 

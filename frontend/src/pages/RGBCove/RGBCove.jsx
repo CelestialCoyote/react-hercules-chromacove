@@ -36,7 +36,7 @@ export default function RGBCove() {
 					)}
 					
 					<SliderWhite
-						color="#999999"
+						color="#888888"
 						whtValue={whtValue}
 						setWhtValue={setWhtValue}
 						setMasterValue={setMasterValue}
