@@ -50,80 +50,53 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 		};
 	};
 
-	// const handleColorChange = (event) => {
-	// 	updateChannelState(channelState.id, event.target.value);
+	const handleColorChange = (event) => {
+		// updateChannelState(channelState.id, event.target.value);
 
-	// 	if (event.target.value === 0.000) setTemp(0);
+		if (event.target.value === 0.000) setTemp(0);
 
-	// 	sendColorData(event.target.value, true);
-	// };
+		sendColorData(event.target.value, true);
+	};
 
-	// const handleToggleButton = () => {
-	// 	let newLevel;
-	// 	if (channelState.value > 0.000) {
-	// 		setTemp(channelState.value);
-	// 		updateChannelState(channelState.id, 0.000);
-	// 		newLevel = 0.000;
-	// 	} else {
-	// 		if (temp === 0.000) {
-	// 			setTemp(1.000);
-	// 			updateChannelState(channelState.id, 1.000);
-	// 			newLevel = 1.000;
-	// 		} else {
-	// 			updateChannelState(channelState.id, temp);
-	// 			newLevel = temp;
-	// 		}
-	// 	}
+	const handleToggleButton = () => {
+		let newLevel;
+		if (whtValue.value > 0.000) {
+			setTemp(whtValue);
+			// updateChannelState(channelState.id, 0.000);
+			newLevel = 0.000;
+		} else {
+			if (temp === 0.000) {
+				setTemp(1.000);
+				// updateChannelState(channelState.id, 1.000);
+				newLevel = 1.000;
+			} else {
+				// updateChannelState(channelState.id, temp);
+				newLevel = temp;
+			}
+		}
 
-	// 	sendColorData(newLevel);
-	// };
+		sendColorData(newLevel);
+	};
 
 	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-md rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
 
 	return (
 
-		<div className="rgbw-slider-container">
+		<div className="flex flex-col items-center w-32">
 
-			<div className="fade-buttons">
+			<button
+				className={whtValue > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
+				onClick={handleToggleButton}
+			>
+				WHT {whtValue > 0 ? "On" : "Off"}
+			</button>
 
-				<button
-					className="cove-button wht-button"
-					onClick={() => {
-						//setWhtValue(1.000);
-						// handleButtonChange(
-						// 	[
-						// 		{ "red": -1 },
-						// 		{ "grn": -1 },
-						// 		{ "blu": -1 },
-						// 		{ "wht": 1.000 },
-						// 		{ "master": masterValue },
-						// 		{ "duration": duration }
-						// 	])
-					}}
-				>
-					Wht On
-				</button>
-
-				<button
-					className="cove-button wht-button"
-					onClick={() => {
-						// setWhtValue(0.000);
-						// handleButtonChange(
-						// 	[
-						// 		{ "red": -1 },
-						// 		{ "grn": -1 },
-						// 		{ "blu": -1 },
-						// 		{ "wht": 0.000 },
-						// 		{ "master": masterValue },
-						// 		{ "duration": duration }
-						// 	])
-					}}
-				>
-					Wht Off
-				</button>
-
-			</div>
+			<h3
+				className="text-center text-red-500 text-xl py-2 px-2 m-4"
+			>
+				WHT<br />{whtValue.toFixed(3)}
+			</h3>
 
 			<label
 				className="slider-label slider-wht"
@@ -163,7 +136,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 				}}
 			/>
 
-		</div>
+		</div >
 
 	);
 };
