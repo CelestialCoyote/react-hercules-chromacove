@@ -6,11 +6,6 @@ import { baseAPI } from '../userConfig/baseAPI';
 export default function SliderWhite({ color, whtValue, setWhtValue, masterValue, duration }) {
 
 	const [temp, setTemp] = useState(0.000);
-	const [previousValue, setPreviousValue] = useState(null);
-
-	// const updateChannelState = () => {
-	// 	setWhtValue((previous) => { setPreviousValue(previous) });
-	// }
 
 	const debounce = (func, wait, immediate) => {
 		let timeout;
@@ -57,7 +52,6 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 	};
 
 	const handleColorChange = (event) => {
-		//updateChannelState(event.target.value);
 		setWhtValue(event.target.value);
 
 		if (event.target.value === 0.000) setTemp(0);
@@ -67,25 +61,22 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 
 	const handleToggleButton = () => {
 		let newLevel;
-		if (whtValue.value > 0.000) {
+		if (whtValue > 0.000) {
 			setTemp(whtValue);
-			//updateChannelState(0.000);
 			setWhtValue(0.000);
 			newLevel = 0.000;
 		} else {
 			if (temp === 0.000) {
 				setTemp(1.000);
-				//updateChannelState(1.000);
 				setWhtValue(1.000);
 				newLevel = 1.000;
 			} else {
-				//updateChannelState(temp);
 				setWhtValue(temp);
 				newLevel = temp;
-			}
-		}
+			};
+		};
 
-		sendColorData(newLevel);
+		sendColorData(newLevel, false);
 	};
 
 	const toggleButton = "bg-black border-red-500 border-2 text-red-500 text-md rounded-xl p-1 w-24 hover:border-red-300 hover:text-red-300";
@@ -108,11 +99,11 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 				WHT<br />{whtValue.toFixed(3)}
 			</h3>
 
-			<label
+			<h3
 				className="slider-label slider-wht"
 			>
 				Wht<br />{whtValue.toFixed(3)}
-			</label>
+			</h3>
 
 			<Slider
 				sx={{
@@ -140,10 +131,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 				max={1.000}
 				step={0.001}
 				value={whtValue}
-				onChange={(e) => {
-					setWhtValue(e.target.value);
-					debounce(handleColorChange);
-				}}
+				onChange={debounce(handleColorChange)}
 			/>
 
 		</div >
