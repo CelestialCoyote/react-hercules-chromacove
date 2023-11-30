@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-export default function SliderWhite({ color, whtValue, setWhtValue, masterValue, duration }) {
+export default function SliderWhite({ color, state, setState, master, duration }) {
 
 	const [temp, setTemp] = useState(0.000);
 
@@ -52,7 +52,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 	};
 
 	const handleColorChange = (event) => {
-		setWhtValue(event.target.value);
+		setState(event.target.value);
 
 		if (event.target.value === 0.000) setTemp(0);
 
@@ -61,17 +61,17 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 
 	const handleToggleButton = () => {
 		let newLevel;
-		if (whtValue > 0.000) {
-			setTemp(whtValue);
-			setWhtValue(0.000);
+		if (state > 0.000) {
+			setTemp(state);
+			setState(0.000);
 			newLevel = 0.000;
 		} else {
 			if (temp === 0.000) {
 				setTemp(1.000);
-				setWhtValue(1.000);
+				setState(1.000);
 				newLevel = 1.000;
 			} else {
-				setWhtValue(temp);
+				setState(temp);
 				newLevel = temp;
 			};
 		};
@@ -87,22 +87,20 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 		<div className="flex flex-col items-center w-32">
 
 			<button
-				className={whtValue > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
+				className={state > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
 				onClick={handleToggleButton}
 			>
-				WHT {whtValue > 0 ? "On" : "Off"}
+				WHT {state > 0 ? "On" : "Off"}
 			</button>
 
 			<h3
 				className="text-center text-red-500 text-xl py-2 px-2 m-4"
 			>
-				WHT<br />{whtValue.toFixed(3)}
+				WHT<br />{state.toFixed(3)}
 			</h3>
 
-			<h3
-				className="slider-label slider-wht"
-			>
-				Wht<br />{whtValue.toFixed(3)}
+			<h3 className="slider-label slider-wht">
+				Wht<br />{state.toFixed(3)}
 			</h3>
 
 			<Slider
@@ -130,7 +128,7 @@ export default function SliderWhite({ color, whtValue, setWhtValue, masterValue,
 				min={0.000}
 				max={1.000}
 				step={0.001}
-				value={whtValue}
+				value={state}
 				onChange={debounce(handleColorChange)}
 			/>
 
