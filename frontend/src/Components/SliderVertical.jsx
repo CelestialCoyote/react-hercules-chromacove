@@ -6,7 +6,6 @@ import { baseAPI } from '../userConfig/baseAPI';
 export default function SliderVertical(
 	{ color, channelState, rgbChannels, setRGBState, masterValue, duration }
 ) {
-
 	const [temp, setTemp] = useState(0.000);
 
 	const updateChannelState = (channelId, value) => {
@@ -46,7 +45,6 @@ export default function SliderVertical(
 			channelDuration = 0.01;
 		else
 			channelDuration = duration;
-
 		if (channelState.id === 0) {
 			redVal = (currentValue * masterValue).toFixed(3);
 			grnVal = (rgbChannels[1].value * masterValue).toFixed(3);
@@ -59,7 +57,7 @@ export default function SliderVertical(
 			redVal = (rgbChannels[0].value * masterValue).toFixed(3);
 			grnVal = (rgbChannels[1].value * masterValue).toFixed(3);
 			bluVal = (currentValue * masterValue).toFixed(3);
-		}
+		};
 
 		data.push({
 			"red": redVal,
@@ -100,8 +98,8 @@ export default function SliderVertical(
 			} else {
 				updateChannelState(channelState.id, temp);
 				newLevel = temp;
-			}
-		}
+			};
+		};
 
 		sendColorData(newLevel);
 	};
@@ -110,7 +108,6 @@ export default function SliderVertical(
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
 
 	return (
-
 		<div className="flex flex-col items-center w-32">
 
 			<button
@@ -154,6 +151,5 @@ export default function SliderVertical(
 			/>
 
 		</div>
-
 	);
 };

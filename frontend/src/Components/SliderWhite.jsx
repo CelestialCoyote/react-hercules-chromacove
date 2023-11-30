@@ -4,7 +4,6 @@ import { baseAPI } from '../userConfig/baseAPI';
 
 
 export default function SliderWhite({ color, state, setState, master, duration }) {
-
 	const [temp, setTemp] = useState(0.000);
 
 	const debounce = (func, wait, immediate) => {
@@ -83,7 +82,6 @@ export default function SliderWhite({ color, state, setState, master, duration }
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
 
 	return (
-
 		<div className="flex flex-col items-center w-32">
 
 			<button
@@ -93,14 +91,8 @@ export default function SliderWhite({ color, state, setState, master, duration }
 				WHT {state > 0 ? "On" : "Off"}
 			</button>
 
-			<h3
-				className="text-center text-red-500 text-xl py-2 px-2 m-4"
-			>
+			<h3 className="text-center text-red-500 text-xl py-2 px-2 m-4">
 				WHT<br />{state.toFixed(3)}
-			</h3>
-
-			<h3 className="slider-label slider-wht">
-				Wht<br />{state.toFixed(3)}
 			</h3>
 
 			<Slider
@@ -133,6 +125,5 @@ export default function SliderWhite({ color, state, setState, master, duration }
 			/>
 
 		</div >
-
 	);
 };
