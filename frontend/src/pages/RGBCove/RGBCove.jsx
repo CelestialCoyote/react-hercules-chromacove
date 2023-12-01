@@ -33,7 +33,7 @@ export default function RGBCove() {
 					)}
 				</div>
 
-				<div className="flex flex-col mt-4 h-36 border-2">
+				<div className="flex flex-col mt-4 h-48">
 					<SliderMaster
 						color="#886622"
 						rgbChannels={rgbState}
@@ -59,7 +59,7 @@ export default function RGBCove() {
 			</div>
 
 			<div className="flex flex-col">
-				<div className="flex h-full border-2">
+				<div className="flex h-full">
 					<SliderWhite
 						color="#888888"
 						state={whtValue}
@@ -70,7 +70,7 @@ export default function RGBCove() {
 					/>
 				</div>
 
-				<div className="bg-red-300 mt-4 h-36"></div>
+				<div className="mt-4 h-52"></div>
 			</div>
 		</div>
 	);
