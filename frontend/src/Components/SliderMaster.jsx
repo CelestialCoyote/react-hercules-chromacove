@@ -90,7 +90,6 @@ export default function SliderMaster({ color, rgbChannels, masterValue, setMaste
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-32 hover:bg-red-300 hover:border-red-300";
 
 	return (
-
 		<div className="flex flex-col items-center w-full">
 
 			<h3 className="text-red-500 text-xl text-center mt-4">

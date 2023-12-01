@@ -32,18 +32,18 @@ export default function RGBCove() {
 							duration={duration}
 						/>
 					)}
-					
-					<SliderWhite
+
+					{/* <SliderWhite
 						color="#888888"
 						state={whtValue}
 						setState={setWhtValue}
 						setMaster={setMasterValue}
 						master={masterValue}
 						duration={duration}
-					/>
+					/> */}
 				</div>
 
-				<div className="flex flex-col mt-4">
+				<div className="flex flex-col mt-4 h-36 border-2">
 					<SliderMaster
 						color="#886622"
 						rgbChannels={rgbState}
@@ -66,6 +66,21 @@ export default function RGBCove() {
 					duration={duration}
 					setDuration={setDuration}
 				/>
+			</div>
+
+			<div className="h-full border-2">
+				<SliderWhite
+					color="#888888"
+					state={whtValue}
+					setState={setWhtValue}
+					setMaster={setMasterValue}
+					master={masterValue}
+					duration={duration}
+				/>
+
+				<div className="bg-red-300 h-36">
+
+				</div>
 			</div>
 
 		</div>

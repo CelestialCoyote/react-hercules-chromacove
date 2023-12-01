@@ -108,7 +108,7 @@ export default function SliderVertical(
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black rounded-xl p-1 w-24 hover:bg-red-300 hover:border-red-300";
 
 	return (
-		<div className="flex flex-col items-center w-32">
+		<div className="flex flex-col items-center w-32 border-2">
 
 			<button
 				className={channelState.value > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
