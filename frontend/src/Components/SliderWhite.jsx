@@ -83,7 +83,6 @@ export default function SliderWhite({ color, state, setState, master, duration }
 
 	return (
 		<div className="flex flex-col items-center w-32">
-
 			<button
 				className={state > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
 				onClick={handleToggleButton}
@@ -123,7 +122,6 @@ export default function SliderWhite({ color, state, setState, master, duration }
 				value={state}
 				onChange={debounce(handleColorChange)}
 			/>
-
 		</div >
 	);
 };

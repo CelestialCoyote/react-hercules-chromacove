@@ -90,8 +90,7 @@ export default function SliderMaster({ color, rgbChannels, masterValue, setMaste
 	const toggleButtonOn = "bg-red-500 border-red-500 border-2 text-black text-xl rounded-xl p-1 w-32 hover:bg-red-300 hover:border-red-300";
 
 	return (
-		<div className="flex flex-col items-center w-full">
-
+		<div className="flex flex-col items-center">
 			<h3 className="text-red-500 text-xl text-center mt-4">
 				Master / Intensity
 			</h3>
@@ -125,7 +124,6 @@ export default function SliderMaster({ color, rgbChannels, masterValue, setMaste
 				<h3 className="text-red-500 text-lg text-center pl-6">
 					{masterValue.toFixed(3)}
 				</h3>
-
 			</div>
 
 			<button
@@ -134,8 +132,6 @@ export default function SliderMaster({ color, rgbChannels, masterValue, setMaste
 			>
 				Master {isOff ? "Off" : "On"}
 			</button>
-
 		</div>
-
 	);
 };

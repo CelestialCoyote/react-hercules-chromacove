@@ -109,7 +109,6 @@ export default function SliderVertical(
 
 	return (
 		<div className="flex flex-col items-center w-32 border-2">
-
 			<button
 				className={channelState.value > 0 ? `${toggleButtonOn}` : `${toggleButton}`}
 				onClick={handleToggleButton}
@@ -149,7 +148,6 @@ export default function SliderVertical(
 				value={channelState.value}
 				onChange={debounce(handleColorChange)}
 			/>
-
 		</div>
 	);
 };

@@ -17,7 +17,6 @@ export default function RGBCove() {
 
 	return (
 		<div className="flex h-screen p-6 gap-10 mt-12">
-
 			<div className="flex flex-col w-1/2">
 				<div className="flex h-full justify-between">
 					{rgbChannels.map(channel =>
@@ -32,15 +31,6 @@ export default function RGBCove() {
 							duration={duration}
 						/>
 					)}
-
-					{/* <SliderWhite
-						color="#888888"
-						state={whtValue}
-						setState={setWhtValue}
-						setMaster={setMasterValue}
-						master={masterValue}
-						duration={duration}
-					/> */}
 				</div>
 
 				<div className="flex flex-col mt-4 h-36 border-2">
@@ -68,21 +58,20 @@ export default function RGBCove() {
 				/>
 			</div>
 
-			<div className="h-full border-2">
-				<SliderWhite
-					color="#888888"
-					state={whtValue}
-					setState={setWhtValue}
-					setMaster={setMasterValue}
-					master={masterValue}
-					duration={duration}
-				/>
-
-				<div className="bg-red-300 h-36">
-
+			<div className="flex flex-col">
+				<div className="flex h-full border-2">
+					<SliderWhite
+						color="#888888"
+						state={whtValue}
+						setState={setWhtValue}
+						setMaster={setMasterValue}
+						master={masterValue}
+						duration={duration}
+					/>
 				</div>
-			</div>
 
+				<div className="bg-red-300 mt-4 h-36"></div>
+			</div>
 		</div>
 	);
 };
