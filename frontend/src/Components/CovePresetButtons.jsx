@@ -1,8 +1,7 @@
 import { baseAPI } from '../userConfig/baseAPI';
 
 
-const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, setIsEditOpen }) => {
-
+const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, setEditOpen }) => {
 	const sendPresetData = (preset) => {
 		const allChannels = [];
 		const presetChannels = preset.channels;
@@ -45,7 +44,6 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 	};
 
 	return (
-
 		<div className="flex flex-col text-red-500">
 
 			<h1 className="text-center m-6">Cove Level Presets</h1>
@@ -64,15 +62,12 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 
 			<button
 				className="edit-button"
-				onClick={() => { setIsEditOpen(true) }}
+				onClick={() => { setEditOpen(true) }}
 			>
 				Edit Presets
 			</button>
-
 		</div>
-
 	);
-
 };
 
 

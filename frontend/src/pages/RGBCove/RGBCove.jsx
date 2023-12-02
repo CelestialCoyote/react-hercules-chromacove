@@ -14,6 +14,7 @@ export default function RGBCove() {
 	const [masterValue, setMasterValue] = useState(1.000);
 	const [duration, setDuration] = useState(3);
 	const [presets, setPresets] = useState(Presets);
+	const [editOpen, setEditOpen] = useState(false);
 
 	return (
 		<div className="flex h-screen p-6 gap-10 mt-12">
@@ -50,6 +51,7 @@ export default function RGBCove() {
 					rgbState={rgbState}
 					setRGBState={setRGBState}
 					setMasterValue={setMasterValue}
+					setEditOpen={setEditOpen}
 				/>
 
 				<FadeRateSelect
