@@ -227,6 +227,28 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
     //     presetData(selectedPreset.id);
     // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+	 const editPreset = "bg-black border-red-500 border-2 rounded-xl";
+	//  {
+	// 	background-color: black;
+	// 	border: 2px solid red;
+	// 	border-radius: 0.75rem;
+	// 	color: red;
+	// 	font-size: 1.25rem;
+	// 	height: 2.5rem;
+	// 	width: 6.5rem;
+	// }
+	
+	const editPresetOn = "bg-red-300";
+	// .edit-preset-button-on {
+	// 	background-color: red;
+	// 	border: 2px solid red;
+	// 	border-radius: 0.75rem;
+	// 	color: black;
+	// 	font-size: 1.25rem;
+	// 	height: 2.5rem;
+	// 	width: 6.5rem;
+	// }
+
     return (
         <div className="edit-presets-modal">
 
@@ -239,7 +261,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                     {presets.map(preset =>
                         <button
                             key={preset.id}
-                            //className={preset.id === selectedPreset.id ? "edit-preset-button-on" : "edit-preset-button"}
+                            className={preset.id === preset.id ? "edit-preset-button-on" : "edit-preset-button"}
                             //onClick={() => { selectPresetToEdit(preset.id) }}
                         >
                             {preset.label}
