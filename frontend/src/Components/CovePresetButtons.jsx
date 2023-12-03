@@ -51,7 +51,7 @@ const CovePresetButtons = ({ presets, rgbState, setRGBState, setMasterValue, set
 			<div className="grid grid-cols-4 place-items-center gap-6 mb-6">
 				{presets.map(preset =>
 					<button
-						key={preset.preset}
+						key={preset.id}
 						className="border-red-500 border-2 rounded-xl w-24 p-1"
 						onClick={() => { sendPresetData(preset) }}
 					>

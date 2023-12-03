@@ -8,82 +8,82 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 
     // Create a copy of all channels state, so sliders do not change prematurely.
     // Represents all available channels.
-    //const [tempState, setTempState] = useState(JSON.parse(JSON.stringify(rgbState)));
+    const [tempState, setTempState] = useState(JSON.parse(JSON.stringify(rgbState)));
     // When component loads, set selected preset to first in array.
     // Update selectedPreset as preset button is selected. 
-    //const [selectedPreset, setSelectedPreset] = useState(presets[0]);
+    const [selectedPreset, setSelectedPreset] = useState(presets[0]);
     // Create object to hold channels defined in presetSelected.
-    //const [presetChannels, setPresetChannels] = useState([]);
+    const [presetChannels, setPresetChannels] = useState([]);
     // Create a temp object to preset info as it is edited.
-    // const [tempPreset, setTempPreset] = useState({
-    //     "preset": selectedPreset.preset,
-    //     "label": "",
-    //     "channels": {},
-    //     "master": "",
-    //     "duration": ""
-    // });
+    const [tempPreset, setTempPreset] = useState({
+        "preset": selectedPreset.preset,
+        "label": "",
+        "channels": {},
+        "master": "",
+        "duration": ""
+    });
 
-    // const selectPresetToEdit = (selected) => {
-    //     // Set className to toggle preset button selected.
-    //     setSelectedPreset(presets[selected]);
+    const selectPresetToEdit = (selected) => {
+        // Set className to toggle preset button selected.
+        setSelectedPreset(presets[selected]);
 
-    //     presetData(selected);
-    // };
+        presetData(selected);
+    };
 
-    // const getAllChannels = (preset) => {
-    //     // Copy channelState to array of objects.
-    //     const allChannels = [];
-    //     Object.values(tempState).forEach(channel => {
-    //         allChannels.push(channel);
-    //     });
+    const getAllChannels = (preset) => {
+        // Copy channelState to array of objects.
+        const allChannels = [];
+        Object.values(tempState).forEach(channel => {
+            allChannels.push(channel);
+        });
 
-    //     // Reset value key to 0 before inputing Preset data.
-    //     // Otherwise previous values could be in channels not used by current preset.
-    //     allChannels.forEach(channel => channel.value = 0);
+        // Reset value key to 0 before inputing Preset data.
+        // Otherwise previous values could be in channels not used by current preset.
+        allChannels.forEach(channel => channel.value = 0);
 
-    //     // Preset < 0, means all channel values should be 0.
-    //     if (preset < 0) {
-    //         return allChannels;
-    //     } else {
-    //         // Create object to hold channels and values used by preset.
-    //         const presetChannelsUsed = preset.channels;
+        // Preset < 0, means all channel values should be 0.
+        if (preset < 0) {
+            return allChannels;
+        } else {
+            // Create object to hold channels and values used by preset.
+            const presetChannelsUsed = preset.channels;
 
-    //         // For every color in Preset adjust the color value in allChannels.
-    //         Object.keys(presetChannelsUsed).forEach(preset => {
-    //             allChannels.forEach(channel => {
-    //                 if (channel.name === preset.toLowerCase())
-    //                     channel.value = presetChannelsUsed[preset];
-    //             });
-    //         });
+            // For every color in Preset adjust the color value in allChannels.
+            Object.keys(presetChannelsUsed).forEach(preset => {
+                allChannels.forEach(channel => {
+                    if (channel.name === preset.toLowerCase())
+                        channel.value = presetChannelsUsed[preset];
+                });
+            });
 
-    //         return allChannels;
-    //     };
-    // };
+            return allChannels;
+        };
+    };
 
-    // const presetData = (selected) => {
-    //     // Get all channels in use.
-    //     const allChannels = getAllChannels(presets[selected]);
+    const presetData = (selected) => {
+        // Get all channels in use.
+        const allChannels = getAllChannels(presets[selected]);
 
-    //     // Update tempState channels to hold values contained in presetSelected.
-    //     // Any channels not listed in preset will be set to 0.
-    //     allChannels.forEach(channel => {
-    //         setTempState(prevState => (
-    //             { ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
-    //         ));
-    //     });
+        // Update tempState channels to hold values contained in presetSelected.
+        // Any channels not listed in preset will be set to 0.
+        allChannels.forEach(channel => {
+            setTempState(prevState => (
+                { ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
+            ));
+        });
 
-    //     setPresetChannels(allChannels);
+        setPresetChannels(allChannels);
 
-    //     // Set tempPreset with selected preset values.
-    //     setTempPreset(previousInput => ({
-    //         ...previousInput,
-    //         preset: presets[selected].preset,
-    //         label: presets[selected].label,
-    //         master: presets[selected].master,
-    //         duration: presets[selected].duration,
-    //         channels: presets[selected].channels
-    //     }));
-    // };
+        // Set tempPreset with selected preset values.
+        setTempPreset(previousInput => ({
+            ...previousInput,
+            preset: presets[selected].preset,
+            label: presets[selected].label,
+            master: presets[selected].master,
+            duration: presets[selected].duration,
+            channels: presets[selected].channels
+        }));
+    };
 
     // const handleLabelChange = (event) => {
     //     setTempPreset(previousInput => ({ ...previousInput, label: event.target.value }));
@@ -223,31 +223,12 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
     //     }
     // };
 
-    // useEffect(() => {
-    //     presetData(selectedPreset.id);
-    // }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        presetData(selectedPreset.id);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	 const editPreset = "bg-black border-red-500 border-2 rounded-xl";
-	//  {
-	// 	background-color: black;
-	// 	border: 2px solid red;
-	// 	border-radius: 0.75rem;
-	// 	color: red;
-	// 	font-size: 1.25rem;
-	// 	height: 2.5rem;
-	// 	width: 6.5rem;
-	// }
-	
 	const editPresetOn = "bg-red-300";
-	// .edit-preset-button-on {
-	// 	background-color: red;
-	// 	border: 2px solid red;
-	// 	border-radius: 0.75rem;
-	// 	color: black;
-	// 	font-size: 1.25rem;
-	// 	height: 2.5rem;
-	// 	width: 6.5rem;
-	// }
 
     return (
         <div className="edit-presets-modal">
@@ -261,8 +242,8 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                     {presets.map(preset =>
                         <button
                             key={preset.id}
-                            className={preset.id === preset.id ? "edit-preset-button-on" : "edit-preset-button"}
-                            //onClick={() => { selectPresetToEdit(preset.id) }}
+                            className={preset.id === selectedPreset.id ? "edit-preset-button-on" : "edit-preset-button"}
+                            onClick={() => { selectPresetToEdit(preset.id) }}
                         >
                             {preset.label}
                         </button>
