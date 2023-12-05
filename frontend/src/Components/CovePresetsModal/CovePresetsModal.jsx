@@ -233,7 +233,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
     return (
         <div className="flex flex-col mt-16">
 
-            <h3 className="">Edit Cove Presets</h3>
+            <h3 className="text-red-500 text-center text-3xl">Edit Cove Presets</h3>
 
             <div className="edit-selection">
 
@@ -251,7 +251,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 
                 </div>
 
-                {/* <div className="edit-settings">
+                <div className="edit-settings">
 
                     <label className="edit-settings-label">Edit Preset Values</label>
 
@@ -275,7 +275,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                                 maxLength={10}
                                 placeholder={selectedPreset.label}
                                 value={tempPreset.label}
-                                onChange={handleLabelChange}
+                                // onChange={handleLabelChange}
                             />
 
                         </div>
@@ -296,7 +296,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                                 maxLength={5}
                                 placeholder={selectedPreset.master}
                                 value={tempPreset.master}
-                                onChange={handleMasterValueChange}
+                                // onChange={handleMasterValueChange}
                             />
 
                         </div>
@@ -317,16 +317,16 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                                 maxLength={5}
                                 placeholder={selectedPreset.duration}
                                 value={tempPreset.duration}
-                                onChange={handleDurationChange}
+                                // onChange={handleDurationChange}
                             />
 
                         </div>
 
                     </div>
 
-                    <label className="edit-settings-label-medium">Channels Available:</label> */}
+                    <label className="edit-settings-label-medium">Channels Available:</label>
 
-                    {/*<div>
+                    {/* <div>
 
                         {presetChannels.map(channel =>
                             <PresetInput
@@ -337,11 +337,11 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                             />
                         )}
 
-                    </div>
+                    </div> */}
 
-                    <div>*/}
+                    <div>
 
-                        {/* {presetChannels.map(channel =>
+                        {presetChannels.map(channel =>
                             <div className="preset-input" key={channel.id}>
 
                                 <label className="input-label">
@@ -358,16 +358,15 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                                     maxLength={5}
                                     placeholder={channel.value}
                                     value={tempPreset.channels[channel.name] || "0.000"}
-                                    onChange={handleChannelValueChange}
+                                    // onChange={handleChannelValueChange}
                                 />
 
                             </div>
                         )}
 
                     </div>
-                </div> */}
+                </div>
             </div>
-
 
             <div className="edit-presets-buttons">
 
