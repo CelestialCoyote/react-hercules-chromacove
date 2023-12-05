@@ -231,9 +231,9 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 	const editPresetOn = "bg-red-300";
 
     return (
-        <div className="edit-presets-modal">
+        <div className="flex flex-col mt-16">
 
-            <label className="edit-presets-modal-label">Edit Cove Presets</label>
+            <h3 className="">Edit Cove Presets</h3>
 
             <div className="edit-selection">
 

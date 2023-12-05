@@ -1,9 +1,9 @@
-.edit-presets-modal {
+/* .edit-presets-modal {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-}
+} */
 
 .edit-presets-modal-label {
     color: red;
