@@ -85,143 +85,143 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 		}));
 	};
 
-	// const handleLabelChange = (event) => {
-	//     setTempPreset(previousInput => ({ ...previousInput, label: event.target.value }));
-	//     console.log(tempPreset);
-	// };
+	const handleLabelChange = (event) => {
+	    setTempPreset(previousInput => ({ ...previousInput, label: event.target.value }));
+	    console.log(tempPreset);
+	};
 
-	// const handleMasterValueChange = (event) => {
-	//     let value = event.target.value;
+	const handleMasterValueChange = (event) => {
+	    let value = event.target.value;
 
-	//     if (isNaN(value)) {
-	//         value = 0.000;
-	//     } else if (value > 1.000) {
-	//         value = 1.000;
-	//     }
+	    if (isNaN(value)) {
+	        value = 0.000;
+	    } else if (value > 1.000) {
+	        value = 1.000;
+	    }
 
-	//     event.target.value = Number(value).toFixed(3);
+	    event.target.value = Number(value).toFixed(3);
 
-	//     setTempPreset(previousInput => ({ ...previousInput, master: value }));
-	// };
+	    setTempPreset(previousInput => ({ ...previousInput, master: value }));
+	};
 
-	// const handleDurationChange = (event) => {
-	//     let value = event.target.value;
+	const handleDurationChange = (event) => {
+	    let value = event.target.value;
 
-	//     if (isNaN(value) || value < 0) {
-	//         value = 0.0;
-	//     } else if (value > 999.9) {
-	//         value = 999.9;
-	//     }
+	    if (isNaN(value) || value < 0) {
+	        value = 0.0;
+	    } else if (value > 999.9) {
+	        value = 999.9;
+	    }
 
-	//     setTempPreset(previousInput => ({ ...previousInput, duration: value }));
-	// };
+	    setTempPreset(previousInput => ({ ...previousInput, duration: value }));
+	};
 
-	// const handleChannelValueChange = (event) => {
-	//     let value = event.target.value;
-	//     let name = event.target.name;
+	const handleChannelValueChange = (event) => {
+	    let value = event.target.value;
+	    let name = event.target.name;
 
-	//     if (isNaN(value)) {
-	//         value = 0.000;
-	//     } else if (value > 1.000) {
-	//         value = 1.000;
-	//     }
+	    if (isNaN(value)) {
+	        value = 0.000;
+	    } else if (value > 1.000) {
+	        value = 1.000;
+	    }
 
-	//     setTempPreset(previousInput => ({ ...previousInput, channels: { ...previousInput.channels, [name]: value } }));
-	//     console.log(`channelName: ${name}, value: ${value}`);
-	// };
+	    setTempPreset(previousInput => ({ ...previousInput, channels: { ...previousInput.channels, [name]: value } }));
+	    console.log(`channelName: ${name}, value: ${value}`);
+	};
 
-	// const testChanges = (preset) => {
-	//     // Get all channels in use.
-	//     const allChannels = getAllChannels(preset);
+	const testChanges = (preset) => {
+		// Get all channels in use.
+		const allChannels = getAllChannels(preset);
 
-	//     // Update the sliders to match Preset selected.
-	//     allChannels.forEach(channel => {
-	//         setTempState(prevState => (
-	//             { ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
-	//         ));
-	//     });
+		// Update the sliders to match Preset selected.
+		allChannels.forEach(channel => {
+			setTempState(prevState => (
+				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
+			));
+		});
 
-	//     // Set Master slider state.
-	//     setMasterValue(parseFloat(preset.master));
+		// Set Master slider state.
+		setMasterValue(parseFloat(preset.master));
 
-	//     let masterData = {
-	//         "name": "master",
-	//         "value": preset.master,
-	//         "duration": preset.duration
-	//     };
+		let masterData = {
+			"name": "master",
+			"value": preset.master,
+			"duration": preset.duration
+		};
 
-	//     allChannels.push(masterData);
-	//     sendData(allChannels);
-	// };
+		allChannels.push(masterData);
+		sendData(allChannels);
+	};
 
-	// const discardChanges = () => {
-	//     // Get all channels in use.
-	//     const allChannels = getAllChannels(-1);
+	const discardChanges = () => {
+		// Get all channels in use.
+		const allChannels = getAllChannels(-1);
 
-	//     // Update the sliders to match Preset selected.
-	//     allChannels.forEach(channel => {
-	//         setTempState(prevState => (
-	//             { ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
-	//         ));
-	//     });
+		// Update the sliders to match Preset selected.
+		allChannels.forEach(channel => {
+			setTempState(prevState => (
+				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: channel.value } }
+			));
+		});
 
-	//     // Set Master slider state to default.
-	//     setMasterValue(1.000);
+		// Set Master slider state to default.
+		setMasterValue(1.000);
 
-	//     let masterData = {
-	//         "name": "master",
-	//         "value": 1.000,
-	//         "duration": 3.0
-	//     };
+		let masterData = {
+			"name": "master",
+			"value": 1.000,
+			"duration": 3.0
+		};
 
-	//     allChannels.push(masterData);
-	//     sendData(allChannels);
-	//     presetData(selectedPreset.id);
-	// };
+		allChannels.push(masterData);
+		sendData(allChannels);
+		presetData(selectedPreset.id);
+	};
 
-	// const saveChanges = (preset) => {
-	//     // Get all channels in use.
-	//     const allChannels = getAllChannels(preset);
+	const saveChanges = (preset) => {
+		// Get all channels in use.
+		const allChannels = getAllChannels(preset);
 
-	//     // Update the sliders to match Preset selected.
-	//     allChannels.forEach(channel => {
-	//         setRGBState(prevState => (
-	//             { ...prevState, [channel.id]: { ...prevState[channel.id], value: parseFloat(channel.value) } }
-	//         ));
-	//     });
+		// Update the sliders to match Preset selected.
+		allChannels.forEach(channel => {
+			setRGBState(prevState => (
+				{ ...prevState, [channel.id]: { ...prevState[channel.id], value: parseFloat(channel.value) } }
+			));
+		});
 
-	//     // Set Master slider state.
-	//     setMasterValue(parseFloat(preset.master));
+		// Set Master slider state.
+		setMasterValue(parseFloat(preset.master));
 
-	//     let masterData = {
-	//         "name": "master",
-	//         "value": preset.master,
-	//         "duration": preset.duration
-	//     };
+		let masterData = {
+			"name": "master",
+			"value": preset.master,
+			"duration": preset.duration
+		};
 
-	//     allChannels.push(masterData);
-	//     sendData(allChannels);
+		allChannels.push(masterData);
+		sendData(allChannels);
 
-	//     try {
-	//         baseAPI.post('presets', preset)
-	//             .then((res) => {
-	//                 setPresets(res.data);
-	//             });
-	//     } catch (error) {
-	//         console.log('Update color channel failed.', error);
-	//     };
-	// };
+		try {
+			baseAPI.post('presets', preset)
+				.then((res) => {
+					setPresets(res.data);
+				});
+		} catch (error) {
+			console.log('Update color channel failed.', error);
+		};
+	};
 
-	// const sendData = (allChannels) => {
-	//     try {
-	//         baseAPI.post('presetButton', allChannels)
-	//             .then((res) => {
-	//                 console.log(res.data);
-	//             });
-	//     } catch (error) {
-	//         console.log('Preset button change failed.', error);
-	//     }
-	// };
+	const sendData = (allChannels) => {
+		try {
+			baseAPI.post('presetButton', allChannels)
+				.then((res) => {
+					console.log(res.data);
+				});
+		} catch (error) {
+			console.log('Preset button change failed.', error);
+		}
+	};
 
 	useEffect(() => {
 		presetData(selectedPreset.id);
@@ -256,31 +256,31 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 					<h3 className="edit-settings-label">Edit Preset Values</h3>
 
 					<div className="edit-selected-label">
-						<label className="edit-settings-label-medium">Currently Selected:</label>
-						<label className="edit-selected-number">{selectedPreset.preset}</label>
+						<h3 className="edit-settings-label-medium">Currently Selected:</h3>
+						<h3 className="edit-selected-number">{selectedPreset.preset}</h3>
 					</div>
 
-					<div className="preset-value">
+					<div className="">
 
-						<div className="preset-input">
+						<div className="flex mt-2">
 
-							<h3 className="input-label">Label:</h3>
+							<h3 className="text-red-700 text-right text-xl w-24 mr-4">Label:</h3>
 
 							<input
-								className="preset-input-value"
+								className="text-red-500 bg-black"
 								type="text"
 								name="label"
 								maxLength={10}
 								placeholder={selectedPreset.label}
 								value={tempPreset.label}
-							// onChange={handleLabelChange}
+								onChange={handleLabelChange}
 							/>
 
 						</div>
 
 						<div className="preset-input">
 
-							<label className="input-label">Master:</label>
+							<h3 className="input-label">Master:</h3>
 
 							<input
 								className="preset-input-value"
@@ -292,7 +292,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 								maxLength={5}
 								placeholder={selectedPreset.master}
 								value={tempPreset.master}
-							// onChange={handleMasterValueChange}
+								onChange={handleMasterValueChange}
 							/>
 
 						</div>
@@ -311,7 +311,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 								maxLength={5}
 								placeholder={selectedPreset.duration}
 								value={tempPreset.duration}
-							// onChange={handleDurationChange}
+								onChange={handleDurationChange}
 							/>
 
 						</div>
@@ -352,7 +352,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 									maxLength={5}
 									placeholder={channel.value}
 									value={tempPreset.channels[channel.name] || "0.000"}
-								// onChange={handleChannelValueChange}
+									onChange={handleChannelValueChange}
 								/>
 
 							</div>
@@ -364,33 +364,33 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 
 			<div className="edit-presets-buttons">
 
-				{/* <button
-                    className="edit-button"
-                    onClick={() => { testChanges(tempPreset) }}
-                >
-                    Test
-                </button> */}
-
-				{/* <button
-                    className="edit-button"
-                    onClick={() => { discardChanges() }}
-                >
-                    Discard
-                </button> */}
-
-				{/* <button
-                    className="edit-button"
-                    onClick={() => { saveChanges(tempPreset) }}
-                >
-                    Save
-                </button> */}
+				<button
+					className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
+					onClick={() => { testChanges(tempPreset) }}
+				>
+					Test
+				</button>
 
 				<button
-                    className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
-                    onClick={() => setEditOpen(false)}
-                >
-                    Done
-                </button>
+					className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
+					onClick={() => { discardChanges() }}
+				>
+					Discard
+				</button>
+
+				<button
+					className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
+					onClick={() => { saveChanges(tempPreset) }}
+				>
+					Save
+				</button>
+
+				<button
+					className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
+					onClick={() => setEditOpen(false)}
+				>
+					Done
+				</button>
 			</div>
 		</div>
 	);
