@@ -20,7 +20,7 @@ export default function RGBCove() {
 	return (
 		<>
 			{!editOpen &&
-				<div className="flex h-screen p-6 gap-10 mt-12">
+				<div className="flex h-screen p-6 gap-10 mt-12 bg-orange-800">
 					<div className="flex flex-col w-1/2">
 						<div className="flex h-full justify-between">
 							{rgbChannels.map(channel =>
