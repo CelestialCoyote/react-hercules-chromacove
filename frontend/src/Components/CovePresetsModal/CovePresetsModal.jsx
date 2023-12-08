@@ -263,7 +263,6 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 					<div className="">
 
 						<div className="flex mt-2">
-
 							<h3 className="text-red-700 text-right text-xl w-24 mr-4">Label:</h3>
 
 							<input
@@ -275,11 +274,9 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 								value={tempPreset.label}
 								onChange={handleLabelChange}
 							/>
-
 						</div>
 
 						<div className="preset-input">
-
 							<h3 className="input-label">Master:</h3>
 
 							<input
@@ -294,11 +291,9 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 								value={tempPreset.master}
 								onChange={handleMasterValueChange}
 							/>
-
 						</div>
 
 						<div className="preset-input">
-
 							<h3 className="input-label">Duration:</h3>
 
 							<input
@@ -313,9 +308,7 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 								value={tempPreset.duration}
 								onChange={handleDurationChange}
 							/>
-
 						</div>
-
 					</div>
 
 					<h3 className="edit-settings-label-medium">Channels Available:</h3>
@@ -334,10 +327,8 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
                     </div> */}
 
 					<div>
-
 						{presetChannels.map(channel =>
 							<div className="preset-input" key={channel.id}>
-
 								<label className="input-label">
 									{channel.name}
 								</label>
@@ -354,16 +345,13 @@ const CovePresetsModal = ({ setEditOpen, rgbState, setRGBState, presets, setPres
 									value={tempPreset.channels[channel.name] || "0.000"}
 									onChange={handleChannelValueChange}
 								/>
-
 							</div>
 						)}
-
 					</div>
 				</div>
 			</div>
 
 			<div className="edit-presets-buttons">
-
 				<button
 					className="text-red-500 border-red-500 border-2 rounded-lg px-3 py-2"
 					onClick={() => { testChanges(tempPreset) }}
