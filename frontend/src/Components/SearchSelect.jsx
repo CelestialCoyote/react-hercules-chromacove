@@ -43,7 +43,7 @@ export default function SearchSelect({
 
 	return (
 		<div className="relative bg-lime-300 cursor-pointer">
-			<div className="control">
+			<div className="">
 				<div className="selected-value">
 					<input
 						ref={inputRef}
@@ -57,10 +57,12 @@ export default function SearchSelect({
 						onClick={toggle}
 					/>
 				</div>
-				<div className={`arrow ${isOpen ? "open" : ""}`}></div>
+				<div
+					className={`block absolute h-0 ${isOpen ? "open" : ""}`}>
+				</div>
 			</div>
 
-			<div className={`options ${isOpen ? "open" : ""}`}>
+			<div className={`hidden overflow-y-auto ${isOpen ? "open" : ""}`}>
 				{filter(options).map((option, index) => {
 					return (
 						<div
