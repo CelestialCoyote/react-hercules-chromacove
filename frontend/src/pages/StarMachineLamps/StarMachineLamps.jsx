@@ -1,7 +1,9 @@
 import { useState } from "react";
 import SearchableSelect from "../../components/SearchableSelect";
+import SearchSelect from "../../components/SearchSelect";
 import { animals } from "../../userConfig/animals";
 import { colors } from "../../userConfig/colors";
+import { baseColors } from "../../userConfig/baseColors";
 import "../../components/SearchableSelect.css";
 
 
@@ -14,7 +16,7 @@ export default function StarMachineLamps() {
 
 			<div className="ml-24 mb-24 w-1/2">
 				<SearchableSelect
-					options={animals}
+					options={baseColors}
 					label="name"
 					id="id"
 					selectedVal={value}
@@ -22,11 +24,21 @@ export default function StarMachineLamps() {
 				/>
 			</div>
 
-			<div className="ml-24 mb-96">
+			<div className="ml-24 mb-24 w-1/2">
+				<SearchSelect
+					options={baseColors}
+					label="name"
+					id="id"
+					selectedVal={value}
+					handleChange={(val) => setValue(val)}
+				/>
+			</div>
+
+			{/* <div className="ml-24 mb-96">
 				<select value="">
 					{colors.map(color => <option key={color} value={color}>{color}</option>)}
 				</select>
-			</div>
+			</div> */}
 		</div>
 	);
 };
