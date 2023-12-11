@@ -6,6 +6,7 @@ import { colors } from "../../userConfig/colors";
 import { baseColors } from "../../userConfig/baseColors";
 import "../../components/SearchableSelect.css";
 import SelectComponent from "../../components/SelectComponent";
+import { Select } from "../../components/Select";
 
 
 export default function StarMachineLamps() {
@@ -49,6 +50,8 @@ export default function StarMachineLamps() {
 
 				<p className="mt-4">selectedOption: {selectedOption}</p>
 			</div>
+
+			<Select />
 
 			<div className="ml-24 mb-96">
 				<select value="">
