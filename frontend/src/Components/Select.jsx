@@ -1,20 +1,13 @@
 //import PropTypes from "prop-types";
 import { useState, useMemo, useEffect } from "react";
-//import { uuid } from "./uuid";
-//import { classNames } from "./classNames";
+
 
 export const Select = ({ options, value, onChange }) => {
     const [search, setSearch] = useState("");
     const [open, setOpen] = useState(false);
 
-    //const [id] = useState(uuid());
-
     useEffect(() => {
         function handleOutsideClick(e) {
-            // if (
-            //     !e.target.closest(`#Toggle-${id}`) &&
-            //     !e.target.closest(`#Select-${id}`)
-            // )
             if (
                 !e.target.closest(`#Toggle`) &&
                 !e.target.closest(`#Select`)
@@ -30,22 +23,22 @@ export const Select = ({ options, value, onChange }) => {
     const opt = useMemo(() => {
         //Manage search and options
         const OPTIONS = options.filter(
-            (o) =>
-                o.toString().toLowerCase().indexOf(search.toString().toLowerCase()) !==
+            (option) =>
+                option.toString().toLowerCase().indexOf(search.toString().toLowerCase()) !==
                 -1
         );
 
         return OPTIONS.length > 0
-            ? OPTIONS.map((o, i) => (
+            ? OPTIONS.map((option, i) => (
                 <div
-                    key={i}
-                    className="px-3 py-1 cursor-pointer text-neutral-600 hover:bg-neutral-300"
+                    key={option.id}
+                    className="px-3 py-1 cursor-pointer text-neutral-600 hover:bg-neutral-300 w-48 border-2"
                     onClick={() => {
-                        onChange(o.toString());
+                        onChange(option.toString());
                         setOpen(false);
                     }}
                 >
-                    {o}
+                    {option.name}
                 </div>
             ))
             : [
@@ -66,7 +59,6 @@ export const Select = ({ options, value, onChange }) => {
 
     return (
         <div
-            // id={`Select-${id}`}
             id={`Select`}
             className="relative flex flex-col items-center justify-center"
         >
@@ -82,15 +74,8 @@ export const Select = ({ options, value, onChange }) => {
                 <span
                     className="relative p-4 cursor-pointer"
                     onClick={() => setOpen((p) => !p)}
-                    // id={`Toggle-${id}`}
                     id={`Toggle`}
                 >
-                    {/* <span
-                        className={classNames(
-                            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[6px] border-l-transparent border-r-transparent border-b-0 border-t-neutral-900 transition-[transform]",
-                            open ? "rotate-180" : "rotate-0"
-                        )}
-                    ></span> */}
                      <span
                         className={
                             `absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[6px] border-l-transparent border-r-transparent border-b-0 border-t-neutral-900 transition-[transform]
@@ -111,12 +96,6 @@ export const Select = ({ options, value, onChange }) => {
         </div>
     );
 };
-
-// Select.propTypes = {
-//     options: PropTypes.array.isRequired,
-//     value: PropTypes.string.isRequired,
-//     onChange: PropTypes.func.isRequired,
-// };
 
 Select.defaultProps = {
     options: [],
