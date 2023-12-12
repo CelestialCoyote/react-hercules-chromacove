@@ -10,6 +10,9 @@ const Footer = () => {
 				text-red-500
 				w-full
 				p-2
+				fixed
+				left-0
+				bottom-0
 			"
 		>
             <p>Copyright &copy; {today.getFullYear()}</p>

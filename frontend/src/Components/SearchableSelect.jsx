@@ -43,7 +43,7 @@ export default function SearchableSelect({
 	};
 
 	return (
-		<div className="relative bg-red-200 w-1/2 cursor-pointer">
+		<div className="relative w-1/2 cursor-pointer">
 			<div className="control">
 				<div className="selected-value">
 					<input
