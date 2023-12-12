@@ -14,10 +14,10 @@ export default function StarMachineLamps() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<div className="flex flex-col bg-red-200 h-[900px] text-red-500">
+		<div className="flex flex-col bg-yellow-300 h-[900px] text-red-500">
 			<h1 className="text-3xl text-center w-ful my-24">Star Machine Lamps</h1>
 
-			<div className="ml-24 mb-24 w-1/2 bg-green-500">
+			<div className="flex justify-center w-full h-96 bg-gray-300">
 				<SearchableSelect
 					options={baseColors}
 					label="name"
@@ -37,7 +37,7 @@ export default function StarMachineLamps() {
 				/>
 			</div> */}
 
-			<div className="ml-24 mb-24 w-1/2">
+			{/* <div className="ml-24 mb-24 w-1/2">
 				<SelectComponent
 					options={baseColors}
 					onChange={(item) => setSelectedOption(item)}
@@ -48,14 +48,14 @@ export default function StarMachineLamps() {
 				/>
 
 				<p className="mt-4">selectedOption: {selectedOption}</p>
-			</div>
+			</div> */}
 
-			<div className="flex justify-center w-100">
+			{/* <div className="flex justify-center w-100">
 				<AnotherSelect
 					options={baseColors}
 					searchTerm={"search colors"}
 				/>
-			</div>
+			</div> */}
 
 
 			{/* <div className="ml-24 mb-96">

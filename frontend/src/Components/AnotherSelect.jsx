@@ -23,8 +23,7 @@ export default function AnotherSelect({ options, searchTerm }) {
                 <BiChevronDown size={20} className={`${open && "rotate-180"}`} />
             </div>
             <ul
-                className={`bg-white mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"
-                    } `}
+                className={`bg-white mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}
             >
                 <div className="flex items-center px-2 sticky top-0 bg-white">
                     <AiOutlineSearch size={18} className="text-gray-700" />
