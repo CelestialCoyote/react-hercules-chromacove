@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { baseColors } from "../userConfig/baseColors";
 
 
-export default function AnotherSelect() {
+export default function AnotherSelect({ options, searchTerm }) {
     const [inputValue, setInputValue] = useState("");
     const [selected, setSelected] = useState("");
     const [open, setOpen] = useState(false);
@@ -13,14 +13,13 @@ export default function AnotherSelect() {
         <div className="w-72 font-medium h-80">
             <div
                 onClick={() => setOpen(!open)}
-                className={`bg-white w-full p-2 flex items-center justify-between rounded ${!selected && "text-gray-700"
-                    }`}
+                className={`bg-white w-full p-2 flex items-center justify-between rounded ${!selected && "text-gray-700"}`}
             >
                 {selected
                     ? selected?.length > 25
                         ? selected?.substring(0, 25) + "..."
                         : selected
-                    : "Select Country"}
+                    : "Select"}
                 <BiChevronDown size={20} className={`${open && "rotate-180"}`} />
             </div>
             <ul
@@ -33,11 +32,11 @@ export default function AnotherSelect() {
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value.toLowerCase())}
-                        placeholder="Enter country name"
+                        placeholder={searchTerm}
                         className="placeholder:text-gray-700 p-2 outline-none"
                     />
                 </div>
-                {baseColors?.map((option) => (
+                {options?.map((option) => (
                     <li
                         key={option?.name}
                         className={`p-2 text-sm hover:bg-sky-600 hover:text-white

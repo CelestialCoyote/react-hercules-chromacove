@@ -51,7 +51,10 @@ export default function StarMachineLamps() {
 			</div>
 
 			<div className="flex justify-center w-100">
-				<AnotherSelect />
+				<AnotherSelect
+					options={baseColors}
+					searchTerm={"search colors"}
+				/>
 			</div>
 
 
