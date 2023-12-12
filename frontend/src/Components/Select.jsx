@@ -2,7 +2,7 @@
 import { useState, useMemo, useEffect } from "react";
 
 
-export const Select = ({ options, value, onChange }) => {
+export default function Select({ options, value, onChange }) {
     const [search, setSearch] = useState("");
     const [open, setOpen] = useState(false);
 
