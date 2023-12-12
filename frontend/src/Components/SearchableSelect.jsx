@@ -66,8 +66,7 @@ export default function SearchableSelect({
 					return (
 						<div
 							onClick={() => selectOption(option)}
-							className={`option ${option[label] === selectedVal ? "selected" : ""
-								}`}
+							className={`option ${option[label] === selectedVal ? "selected" : ""}`}
 							key={`${id}-${index}`}
 						>
 							{option[label]}
