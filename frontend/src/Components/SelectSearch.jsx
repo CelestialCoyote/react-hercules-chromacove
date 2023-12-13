@@ -21,7 +21,7 @@ export default function SelectSearch({ options, searchTerm }) {
                 <input
                     type="text"
                     // value={search}
-                    value={inputValue}
+                    value={selected === "" ? inputValue : selected}
                     className="outline-none px-2"
                     // className="placeholder:text-gray-700 p-2 outline-none"
                     // onChange={(e) => setSearch(e.target.value)}
@@ -43,7 +43,7 @@ export default function SelectSearch({ options, searchTerm }) {
                     ></span>
                 </span>
             </div>
-            <div
+            {/* <div
                 onClick={() => setOpen(!open)}
                 className={`bg-white w-full p-2 flex items-center justify-between rounded ${!selected && "text-gray-700"}`}
             >
@@ -53,7 +53,7 @@ export default function SelectSearch({ options, searchTerm }) {
                         : selected
                     : "Select"}
                 <BiChevronDown size={20} className={`${open && "rotate-180"}`} />
-            </div>
+            </div> */}
             <div
                 className={`bg-white mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}
             >
