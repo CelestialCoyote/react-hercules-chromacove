@@ -1,13 +1,10 @@
-import { useState } from "react";
 import SelectSearch from "../../components/SelectSearch";
 import Select from "../../components/Select";
-import SelectTemp from "../../components/SelectTemp";
 //import { animals } from "../../userConfig/animals";
 import { baseColors } from "../../userConfig/baseColors";
 
 
 export default function StarMachineLamps() {
-	const [value, setValue] = useState("");
 
 	return (
 		<div className="flex flex-col bg-yellow-300 h-screen text-red-500">
@@ -26,15 +23,6 @@ export default function StarMachineLamps() {
 					<Select
 						options={baseColors}
 						searchTerm={"search colors"}
-					/>
-				</div>
-
-				<div className="bg-green-300 p-4">
-					<SelectTemp
-						options={baseColors}
-						searchTerm={"search colors"}
-						value={value}
-						setValue={setValue}
 					/>
 				</div>
 			</div>
