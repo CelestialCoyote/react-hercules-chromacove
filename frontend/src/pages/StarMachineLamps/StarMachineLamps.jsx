@@ -1,6 +1,6 @@
 import SelectSearch from "../../components/SelectSearch";
 import Select from "../../components/Select";
-//import { animals } from "../../userConfig/animals";
+import { animals } from "../../userConfig/animals";
 import { baseColors } from "../../userConfig/baseColors";
 
 
@@ -12,9 +12,9 @@ export default function StarMachineLamps() {
 
 			<div className="flex justify-around bg-green-100">
 
-				<div className="bg-green-300 p-4">
+				<div className="bg-green-300 w-96 p-4">
 					<SelectSearch
-						options={baseColors}
+						options={animals}
 						searchTerm={"search colors"}
 					/>
 				</div>
