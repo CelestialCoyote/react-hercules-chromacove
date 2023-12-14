@@ -31,7 +31,8 @@ export default function SelectSearch({ options, searchTerm }) {
             >
                 <input
                     type="text"
-                    value={selected === "" ? search : selected}
+                    // value={selected === "" ? search : selected}
+                    value={search}
                     className="outline-none m-[5px] p-[5px] w-full"
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     onFocus={() => setOpen(true)}
@@ -65,6 +66,7 @@ export default function SelectSearch({ options, searchTerm }) {
                                     setSelected(option?.name);
                                     setOpen(false);
                                     setSearch("");
+                                    setSearch(option?.name);
                                 }
                             }}
                         >
