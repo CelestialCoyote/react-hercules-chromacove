@@ -31,9 +31,8 @@ export default function SelectSearch({ options, searchTerm }) {
             >
                 <input
                     type="text"
-                    // value={selected === "" ? search : selected}
                     value={search}
-                    className="outline-none m-[5px] p-[5px] w-full"
+                    className="bg-gray-100 text-black placeholder:text-gray-500 outline-none p-[8px] w-full"
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     onFocus={() => setOpen(true)}
                     placeholder={searchTerm}
@@ -51,15 +50,16 @@ export default function SelectSearch({ options, searchTerm }) {
                     ></span>
                 </span>
             </div>
+            
             <div
-                className={`bg-white mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}
+                className={`bg-gray-100 mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}
             >
                 {filter(options).map((option) => {
                     return (
                         <div
                             key={option?.id}
-                            className={`p-2 text-sm hover:bg-sky-600 hover:text-white
-                                ${option?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-600 text-white"}`
+                            className={`text-gray-500 hover:bg-sky-300 hover:text-white p-2 overflow-y-hidden
+                                ${option?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-300 text-white"}`
                             }
                             onClick={() => {
                                 if (option?.name?.toLowerCase() !== selected.toLowerCase()) {
