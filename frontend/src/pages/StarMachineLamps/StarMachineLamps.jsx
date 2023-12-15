@@ -16,6 +16,7 @@ export default function StarMachineLamps() {
 					<SelectSearch
 						options={animals}
 						searchTerm={"search colors"}
+						bgInput={"bg-violet-100"}
 					/>
 				</div>
 

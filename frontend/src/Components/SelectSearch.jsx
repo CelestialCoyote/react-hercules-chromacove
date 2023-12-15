@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 
-export default function SelectSearch({ options, searchTerm }) {
+export default function SelectSearch({ options, searchTerm, bgInput }) {
     const [selected, setSelected] = useState("");
     const [search, setSearch] = useState("");
     const [open, setOpen] = useState(false);
+
+    const textColor = "text-red-500";
+    const placeholder = "placeholder:text-gray-500";
 
     const filter = (options) => {
         return options.filter(
@@ -32,7 +35,7 @@ export default function SelectSearch({ options, searchTerm }) {
                 <input
                     type="text"
                     value={search}
-                    className="bg-gray-100 text-black placeholder:text-gray-500 outline-none p-[8px] w-full"
+                    className={`${bgInput} ${textColor} ${placeholder} outline-none p-[8px] w-full`}
                     onChange={(e) => setSearch(e.target.value.toLowerCase())}
                     onFocus={() => setOpen(true)}
                     placeholder={searchTerm}
@@ -52,13 +55,13 @@ export default function SelectSearch({ options, searchTerm }) {
             </div>
             
             <div
-                className={`bg-gray-100 mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"} `}
+                className={`${bgInput} mt-2 overflow-y-auto no-scrollbar ${open ? "max-h-60" : "max-h-0"} `}
             >
                 {filter(options).map((option) => {
                     return (
                         <div
                             key={option?.id}
-                            className={`text-gray-500 hover:bg-sky-300 hover:text-white p-2 overflow-y-hidden
+                            className={`text-gray-500 hover:bg-sky-300 hover:text-white p-2
                                 ${option?.name?.toLowerCase() === selected?.toLowerCase() && "bg-sky-300 text-white"}`
                             }
                             onClick={() => {
